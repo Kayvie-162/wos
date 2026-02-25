@@ -1,645 +1,689 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KreatorKits - Word Search Puzzle Generator</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Chosen Palette: Direct Response High-Converting. Aggressive Reds for pain points/warnings, High-contrast Amber for CTAs, Deep Slate for Authority, Green for Success/Proof. -->
-    
-    <!-- Application Structure Plan: 
-         Strictly follows the provided 7-part direct response sequence. 
-         Designed as a high-converting long-form sales page. 
-         Media Notes are translated into highly polished UI placeholders (Canvas/CSS) to demonstrate the vision without external assets.
-    -->
-    <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8fafc; color: #1e293b; }
-        .pulsing-btn { animation: pulse-shadow 2s infinite; }
-        @keyframes pulse-shadow {
-            0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(245, 158, 11, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Poppins:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        kkblack: '#09090b',
+                        kkpurple: {
+                            900: '#2e1065',
+                            800: '#4c1d95',
+                            600: '#7c3aed',
+                        },
+                        kkyellow: '#fbbf24',
+                        kkred: '#ef4444',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                        handwriting: ['Caveat', 'cursive'],
+                    }
+                }
+            }
         }
-        .shake-btn:hover { animation: shake 0.5s; }
-        @keyframes shake {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            50% { transform: translateX(5px); }
-            75% { transform: translateX(-5px); }
-            100% { transform: translateX(0); }
+    </script>
+    <style>
+        body { background-color: #09090b; color: #f4f4f5; }
+        
+        /* Letter Style */
+        .paper-letter {
+            background-color: #fdfbf7;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+            color: #1e293b;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+        
+        /* Buttons & Glows */
+        .glow-btn-yellow {
+            background: linear-gradient(135deg, #f59e0b, #fbbf24);
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.4);
+            transition: all 0.3s ease;
+        }
+        .glow-btn-yellow:hover {
+            box-shadow: 0 0 40px rgba(251, 191, 36, 0.7);
+            transform: translateY(-2px);
+        }
+        .pulse-epic { animation: epic-pulse 2s infinite; }
+        @keyframes epic-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(251, 191, 36, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0); }
+        }
+
+        /* Toggle Animation */
+        .accordion-content { transition: max-height 0.3s ease-in-out, padding 0.3s ease; max-height: 0; overflow: hidden; }
+        .accordion-content.open { max-height: 500px; padding-top: 1rem; padding-bottom: 1rem; }
+        
+        /* Glassmorphism */
+        .glass-panel {
+            background: rgba(46, 16, 101, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(124, 58, 237, 0.2);
         }
     </style>
 </head>
-<body class="flex flex-col min-h-screen">
+<body class="antialiased">
+
+    <!-- NAVIGATION BAR -->
+    <nav class="sticky top-0 z-50 bg-kkblack/90 backdrop-blur-md border-b border-kkpurple-800 shadow-lg">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0 font-black text-2xl tracking-tighter text-white">
+                    KREATOR<span class="text-kkred">KITS</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#hero" class="text-gray-300 hover:text-kkyellow px-3 py-2 rounded-md text-sm font-semibold uppercase tracking-wide transition">Home</a>
+                        <a href="#proof" class="text-gray-300 hover:text-kkyellow px-3 py-2 rounded-md text-sm font-semibold uppercase tracking-wide transition">Proof</a>
+                        <a href="#letter" class="text-gray-300 hover:text-kkyellow px-3 py-2 rounded-md text-sm font-semibold uppercase tracking-wide transition">The Truth</a>
+                        <a href="#mechanism" class="text-gray-300 hover:text-kkyellow px-3 py-2 rounded-md text-sm font-semibold uppercase tracking-wide transition">How it Works</a>
+                        <a href="#features" class="text-gray-300 hover:text-kkyellow px-3 py-2 rounded-md text-sm font-semibold uppercase tracking-wide transition">Features</a>
+                        <a href="#valuestack" class="bg-kkyellow text-kkblack px-4 py-2 rounded-full text-sm font-black uppercase tracking-wide hover:bg-white transition">Get Access</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
 
     <!-- PHẦN 1: HEADLINE -->
-    <header class="bg-white pt-12 pb-16 px-4 border-b-4 border-slate-200">
-        <div class="max-w-5xl mx-auto text-center">
+    <section id="hero" class="relative pt-20 pb-24 px-4 overflow-hidden bg-gradient-to-b from-kkpurple-900 to-kkblack">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%237c3aed\' fill-opacity=\'0.1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-50"></div>
+        
+        <div class="relative max-w-5xl mx-auto text-center z-10">
             <!-- PRE-HEADLINE -->
-            <div class="inline-block bg-red-100 text-red-700 font-bold px-4 py-2 rounded mb-6 text-sm uppercase tracking-wider border border-red-300">
+            <div class="inline-block bg-kkred text-white font-bold px-4 py-1.5 rounded-full mb-8 text-sm uppercase tracking-widest shadow-[0_0_15px_rgba(239,68,68,0.5)]">
                 ATTENTION KDP PUBLISHERS: If you are still using "Blind-Box" generators where you have to cross your fingers and pray the PDF looks good... you are losing money.
             </div>
             
             <!-- MAIN HEADLINE -->
-            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-6 leading-tight uppercase">
-                WARNING: STOP BUYING "DEAD SOFTWARE" <span class="text-red-600 underline decoration-red-600">FROM DEVELOPERS WHO HAVE NEVER SOLD A SINGLE BOOK ON AMAZON!</span>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight uppercase">
+                WARNING: STOP BUYING <span class="text-kkred">"DEAD SOFTWARE"</span> <br/><span class="text-2xl md:text-4xl text-gray-400">FROM DEVELOPERS WHO HAVE NEVER SOLD A SINGLE BOOK ON AMAZON!</span>
             </h1>
             
             <!-- SUB-HEADLINE -->
-            <p class="text-xl md:text-2xl text-slate-700 mb-8 font-medium max-w-4xl mx-auto">
-                Finally Revealed: The "Real Seller's" Secret Weapon With A LIVE In-Browser Design Studio. Tweak Your Layout, Apply To The "FULL BOOK" Instantly, And Export Viral "Shape-Shifting" Puzzles In Seconds...
+            <p class="text-xl md:text-2xl text-gray-300 mb-10 font-medium max-w-4xl mx-auto border-l-4 border-kkyellow pl-6 text-left leading-relaxed">
+                Finally Revealed: The "Real Seller's" Secret Weapon With A <span class="text-kkyellow font-bold">LIVE In-Browser Design Studio</span>. Tweak Your Layout, Apply To The "FULL BOOK" Instantly, And Export Viral "Shape-Shifting" Puzzles In Seconds...
             </p>
 
             <!-- MEDIA NOTE #0: VIDEO -->
-            <div class="bg-slate-900 rounded-2xl aspect-video w-full max-w-4xl mx-auto mb-8 relative flex flex-col items-center justify-center shadow-2xl border-4 border-slate-800 overflow-hidden cursor-pointer group">
-                <div class="absolute inset-0 bg-indigo-900 opacity-20 group-hover:opacity-40 transition duration-500"></div>
-                <div class="z-10 bg-amber-500 w-20 h-20 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(245,158,11,0.6)] group-hover:scale-110 transition duration-300">
-                    <span class="text-white text-4xl ml-2">▶</span>
+            <div class="glass-panel rounded-2xl aspect-video w-full max-w-4xl mx-auto mb-10 relative flex flex-col items-center justify-center shadow-[0_0_40px_rgba(124,58,237,0.3)] overflow-hidden cursor-pointer group border-2 border-kkpurple-600/50">
+                <div class="absolute inset-0 bg-kkpurple-900 opacity-40 group-hover:opacity-60 transition duration-500"></div>
+                <div class="z-10 bg-kkyellow w-24 h-24 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(251,191,36,0.6)] group-hover:scale-110 transition duration-300">
+                    <span class="text-kkblack text-5xl ml-2">▶</span>
                 </div>
-                <p class="z-10 text-white mt-4 font-bold tracking-widest uppercase text-sm opacity-70">Watch Demo: Turning Ugly Books Into Best-Sellers</p>
-                <div class="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">MEDIA NOTE 0: VIDEO DEMO</div>
+                <p class="z-10 text-white mt-6 font-bold tracking-widest uppercase text-sm bg-kkblack/50 px-4 py-2 rounded-full backdrop-blur-sm">Watch Demo: Turning Ugly Books Into Best-Sellers</p>
+                <div class="absolute top-4 left-4 bg-kkred text-white text-xs font-bold px-3 py-1 rounded shadow-lg">MEDIA NOTE 0: VIDEO DEMO</div>
             </div>
 
             <!-- SUB-HEADLINE 2 -->
-            <p class="text-2xl md:text-3xl font-bold text-slate-800 mb-10 italic">
+            <p class="text-2xl md:text-3xl font-bold text-white mb-12 italic">
                 ...Turning "Ugly, Generic" Books Into High-Ticket Best-Sellers That Dominate The Niche.
             </p>
 
             <!-- CTA #1 -->
-            <div class="max-w-3xl mx-auto bg-slate-50 p-8 rounded-xl border border-slate-200 shadow-sm mb-8">
-                <p class="text-lg text-slate-700 mb-4 text-left">
-                    Professional book formatting isn't optional—it's what separates a $4 amateur book from a $15 bestseller.
-                </p>
-                <p class="text-lg text-slate-700 mb-4 text-left">
-                    Stop losing sales because your books "look cheap". [TOOL NAME] automates the polish, saving you from hours of formatting hell per book.
-                </p>
-                <p class="text-lg text-slate-700 mb-8 text-left font-bold">
-                    Whether you want the exact puzzle topic at the top, or auto-calculating page numbers perfectly centered at the bottom... it's all DONE in seconds.
-                </p>
-                <p class="text-xl font-bold text-center mb-4">Ready to upgrade your KDP Empire?👇🏼</p>
-                <button onclick="document.getElementById('final-cta').scrollIntoView({behavior: 'smooth'})" class="w-full md:w-auto bg-amber-500 hover:bg-amber-600 text-slate-900 text-2xl font-extrabold py-5 px-10 rounded-lg pulsing-btn uppercase tracking-wide transition transform hover:-translate-y-1">
-                    YES, I WANT TO UPGRADE NOW!
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <!-- PHẦN 2: THE PROOF SLAM -->
-    <section class="bg-slate-900 py-16 px-4 text-center">
-        <div class="max-w-4xl mx-auto">
-            <!-- MEDIA NOTE #1: VIDEO -->
-            <div class="bg-slate-800 rounded-xl p-4 border border-slate-700 shadow-2xl relative mb-6 max-w-2xl mx-auto">
-                <div class="absolute top-2 left-2 bg-indigo-500 text-white text-xs font-bold px-2 py-1 rounded z-10">MEDIA NOTE 1: 30-DAY PROFIT SCREENSHOT</div>
-                <div class="bg-slate-900 h-64 rounded flex flex-col items-center justify-center border border-slate-700">
-                    <span class="text-green-500 text-6xl font-bold mb-2">+$14,852.00</span>
-                    <span class="text-slate-400 font-mono text-sm">Last 30 Days Amazon KDP Royalties</span>
+            <div class="max-w-3xl mx-auto glass-panel p-8 md:p-10 rounded-2xl shadow-2xl mb-8 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-kkpurple-600 rounded-full blur-[80px] -mr-10 -mt-10"></div>
+                <div class="absolute bottom-0 left-0 w-32 h-32 bg-kkred rounded-full blur-[80px] -ml-10 -mb-10"></div>
+                
+                <div class="relative z-10">
+                    <p class="text-lg text-gray-200 mb-4 text-left font-medium">
+                        Professional book formatting isn't optional—it's what separates a <span class="text-kkred font-bold line-through">$4 amateur book</span> from a <span class="text-kkyellow font-bold">$15 bestseller</span>.
+                    </p>
+                    <p class="text-lg text-gray-200 mb-4 text-left">
+                        Stop losing sales because your books "look cheap". [TOOL NAME] automates the polish, saving you from hours of formatting hell per book.
+                    </p>
+                    <p class="text-xl text-white mb-8 text-left font-bold border-l-4 border-kkpurple-600 pl-4 bg-kkpurple-900/30 py-2">
+                        Whether you want the exact puzzle topic at the top, or auto-calculating page numbers perfectly centered at the bottom... it's all DONE in seconds.
+                    </p>
+                    <p class="text-2xl font-black text-center mb-6 text-kkyellow uppercase tracking-wide">Ready to upgrade your KDP Empire? 👇🏼</p>
+                    <button onclick="document.getElementById('valuestack').scrollIntoView({behavior: 'smooth'})" class="w-full md:w-auto glow-btn-yellow text-kkblack text-xl md:text-2xl font-black py-5 px-10 rounded-full uppercase tracking-wider">
+                        YES, I WANT TO UPGRADE NOW!
+                    </button>
                 </div>
             </div>
-            <p class="text-2xl text-white font-bold italic">
-                "This is what happens when you stop using 'Toy Tools' and start using a 'Pro Engine'."
+        </div>
+    </section>
+
+    <!-- PHẦN 2: THE PROOF SLAM -->
+    <section id="proof" class="bg-kkblack py-20 px-4 border-t border-kkpurple-900 text-center">
+        <div class="max-w-5xl mx-auto">
+            <!-- MEDIA NOTE #1: VIDEO -->
+            <div class="glass-panel rounded-2xl p-6 relative mb-8 max-w-3xl mx-auto shadow-[0_0_50px_rgba(0,0,0,0.8)] border border-gray-800">
+                <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-kkpurple-600 text-white text-xs font-bold px-4 py-1 rounded-full z-10 tracking-widest uppercase">MEDIA NOTE 1: 30-DAY PROFIT SCREENSHOT</div>
+                <div class="bg-black/80 h-72 rounded-xl flex flex-col items-center justify-center border border-gray-700 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+                    <span class="text-green-500 text-7xl md:text-8xl font-black mb-2 drop-shadow-[0_0_20px_rgba(34,197,94,0.4)] relative z-10">+$14,852<span class="text-4xl text-green-600">.00</span></span>
+                    <span class="text-gray-400 font-mono text-sm tracking-widest uppercase bg-gray-900 px-3 py-1 rounded relative z-10">Last 30 Days Amazon KDP Royalties</span>
+                </div>
+            </div>
+            <p class="text-2xl md:text-3xl text-white font-serif italic max-w-3xl mx-auto leading-relaxed">
+                "This is what happens when you stop using 'Toy Tools' and start using a <span class="text-kkyellow font-bold">'Pro Engine'</span>."
             </p>
         </div>
     </section>
 
-    <!-- PHẦN 3: THE LEAD -->
-    <section class="bg-white py-16 px-4">
+    <!-- PHẦN 3: THE LEAD (THE LETTER) -->
+    <section id="letter" class="bg-gradient-to-b from-kkblack to-kkpurple-900 py-24 px-4 border-t border-gray-900">
         <div class="max-w-4xl mx-auto">
             
-            <!-- CONTENT #1 -->
-            <div class="bg-slate-50 p-8 rounded-xl border border-slate-200 mb-12 shadow-sm font-serif text-lg text-slate-800">
-                <p class="font-bold mb-2">FROM THE DESK OF: Kreator Team (Founders of KreatorKits) – 6-Figure KDP Sellers.</p>
-                <p class="font-bold mb-8">RE: Why your Puzzle Books are failing (It’s not your fault).</p>
+            <!-- CONTENT #1 (THE LETTER UI) -->
+            <div class="paper-letter p-10 md:p-14 rounded-sm mb-16 relative">
+                <!-- Decorative letter elements -->
+                <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-kkred via-kkyellow to-kkpurple-600"></div>
+                <div class="absolute top-10 right-10 opacity-10">
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                </div>
 
-                <p class="mb-4">Dear Frustrated Publisher,</p>
-                <p class="mb-4">I know exactly how you feel because I was YOU.</p>
-                <p class="mb-4">You buy a "Best-Selling" Word Search tool on WarriorPlus. The sales page promised you "Instant Riches". You open it up, click "Generate", and... wow! It spits out 100 puzzles in 30 seconds.</p>
-                <p class="mb-4">You feel excited. You think you are about to make bank.</p>
-                <p class="mb-4 font-bold text-red-600">But then... the nightmare begins.</p>
-                <p class="mb-4">You open the file. It’s a PDF.<br>It’s a "Dead Image". It’s set in stone.</p>
-                <ul class="list-disc pl-8 mb-4 space-y-2">
-                    <li>You spot a typo? You can't fix it.</li>
-                    <li>You want to change the font to make it look premium? You can't.</li>
-                    <li>You want to move the title to the left? Impossible.</li>
-                    <li><strong class="text-red-600">And worst of all...</strong> it looks EXACTLY like the 10,000 other books flooded onto Amazon by the same lazy tool.</li>
-                </ul>
-            </div>
+                <div class="font-sans text-xs font-bold text-gray-400 tracking-widest uppercase border-b border-gray-300 pb-4 mb-8">
+                    <p class="mb-1"><span class="text-kkred">FROM THE DESK OF:</span> Kreator Team (Founders of KreatorKits) – 6-Figure KDP Sellers.</p>
+                    <p><span class="text-kkred">RE:</span> Why your Puzzle Books are failing (It’s not your fault).</p>
+                </div>
 
-            <!-- MEDIA NOTE #2: ẢNH SO SÁNH -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-                <div class="bg-red-50 p-4 rounded-xl border-2 border-red-200 relative">
-                    <div class="absolute top-0 left-0 bg-slate-800 text-white text-xs font-bold px-2 py-1 rounded-br z-10">MEDIA NOTE 2: LEFT</div>
-                    <div class="h-64 bg-white border border-slate-300 shadow flex flex-col items-center justify-center p-4">
-                        <span class="text-5xl mb-2 text-red-500">❌</span>
-                        <div class="w-full bg-slate-200 h-4 mb-2"></div>
-                        <div class="w-full bg-slate-200 h-32 flex items-center justify-center text-slate-400 font-mono text-xs text-center p-2">
-                            A E I O U X<br>B C D F G H<br>(Ugly standard grid)<br><span class="text-red-500 font-bold mt-2 block">TYPO DETECTED - CANNOT EDIT</span>
+                <div class="font-serif text-lg text-gray-800 leading-relaxed space-y-5">
+                    <p>Dear Frustrated Publisher,</p>
+                    <p>I know exactly how you feel because I was YOU.</p>
+                    <p>You buy a "Best-Selling" Word Search tool on WarriorPlus. The sales page promised you "Instant Riches". You open it up, click "Generate", and... wow! It spits out 100 puzzles in 30 seconds.</p>
+                    <p>You feel excited. You think you are about to make bank.</p>
+                    <p class="font-bold text-kkred text-xl bg-red-50 p-2 inline-block">But then... the nightmare begins.</p>
+                    <p>You open the file. It’s a PDF. It’s a "Dead Image". It’s set in stone.</p>
+                    <ul class="list-none pl-4 space-y-3 font-medium">
+                        <li class="flex items-start"><span class="text-kkred mr-2">❌</span> You spot a typo? You can't fix it.</li>
+                        <li class="flex items-start"><span class="text-kkred mr-2">❌</span> You want to change the font to make it look premium? You can't.</li>
+                        <li class="flex items-start"><span class="text-kkred mr-2">❌</span> You want to move the title to the left? Impossible.</li>
+                        <li class="flex items-start bg-red-100 p-2 rounded text-kkred"><span class="mr-2">🚨</span> <strong>And worst of all...</strong> it looks EXACTLY like the 10,000 other books flooded onto Amazon by the same lazy tool.</li>
+                    </ul>
+
+                    <!-- MEDIA NOTE #2: ẢNH SO SÁNH -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-10 font-sans">
+                        <div class="bg-red-50 p-3 rounded-lg border-2 border-red-200 relative">
+                            <div class="absolute top-0 left-0 bg-kkblack text-white text-[10px] font-bold px-2 py-1 rounded-br z-10">MEDIA NOTE 2: LEFT</div>
+                            <div class="h-48 bg-white border border-gray-300 flex flex-col items-center justify-center p-4">
+                                <span class="text-4xl mb-2 text-red-500">📄❌</span>
+                                <div class="w-full bg-gray-200 h-24 flex items-center justify-center text-gray-400 font-mono text-xs text-center p-2">
+                                    A E I O U<br>(Ugly standard grid)<br><span class="text-red-500 font-bold mt-2">CANNOT EDIT</span>
+                                </div>
+                            </div>
+                            <p class="text-center font-bold text-red-700 mt-3 text-sm">The Competitor's PDF Trap (Uneditable)</p>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-lg border-2 border-green-400 relative transform md:scale-105 shadow-xl">
+                            <div class="absolute top-0 right-0 bg-kkblack text-white text-[10px] font-bold px-2 py-1 rounded-bl z-10">MEDIA NOTE 2: RIGHT</div>
+                            <div class="h-48 bg-white border border-gray-300 flex flex-col items-center justify-center p-4 relative">
+                                <span class="text-4xl mb-2 relative z-10">💻✨</span>
+                                <div class="w-full bg-indigo-50 border border-dashed border-indigo-300 h-24 flex items-center justify-center text-indigo-600 font-bold text-sm relative z-10">
+                                    <span class="animate-pulse mr-1">|</span> Editing Live...
+                                </div>
+                            </div>
+                            <p class="text-center font-bold text-green-700 mt-3 text-sm">Our LIVE CANVAS (100% Editable)</p>
                         </div>
                     </div>
-                    <p class="text-center font-bold text-red-700 mt-4">The Competitor's PDF Trap (Uneditable)</p>
+
+                    <p>The "Tech Guys" who built those tools don't care. They are coders, not sellers. They don't know that Amazon creates "Duplicate Content" flags. They don't know that readers hate boring square grids.</p>
+                    <p>I realized: If I wanted to survive on KDP, I needed CONTROL.</p>
+                    <p class="bg-yellow-100 p-2 font-bold text-gray-900 border-l-4 border-kkyellow">I needed to own the SOURCE CODE of my puzzles. (Tôi cần sở hữu MÃ NGUỒN của các câu đố.) I needed to create SHAPES (Hearts, Dogs, Trees) to stand out.</p>
+                    <p>But that tool didn't exist. So I built it.</p>
+                    
+                    <div class="text-center mt-12 mb-6 font-sans">
+                        <p class="text-sm font-bold text-gray-500 uppercase tracking-widest mb-2">Introducing</p>
+                        <h2 class="text-3xl font-black text-kkpurple-900 mb-2">[TOOL NAME]</h2>
+                        <p class="text-xl font-bold text-kkpurple-600">The World’s First Word Search Engine Built By Sellers, FOR Sellers.</p>
+                    </div>
                 </div>
-                <div class="bg-green-50 p-4 rounded-xl border-2 border-green-400 shadow-lg relative transform md:scale-105">
-                    <div class="absolute top-0 right-0 bg-slate-800 text-white text-xs font-bold px-2 py-1 rounded-bl z-10">MEDIA NOTE 2: RIGHT</div>
-                    <div class="h-64 bg-white border border-slate-300 shadow flex flex-col items-center justify-center p-4 relative overflow-hidden">
-                        <span class="text-5xl mb-2 text-green-500 relative z-10">✅</span>
-                        <div class="absolute inset-0 opacity-10 flex flex-wrap gap-1 p-2"><div class="w-4 h-4 bg-indigo-500 rounded-full"></div><div class="w-4 h-4 bg-indigo-500 rounded-full"></div><div class="w-4 h-4 bg-indigo-500 rounded-full"></div></div>
-                        <div class="w-full bg-indigo-100 h-6 mb-2 rounded flex justify-between items-center px-2 relative z-10">
-                            <span class="w-16 h-2 bg-indigo-300 rounded"></span>
-                            <span class="w-4 h-4 rounded-full border-2 border-indigo-400"></span>
+
+                <div class="mt-12 font-handwriting text-5xl text-kkpurple-800 text-right pr-10">
+                    Kreator Team
+                </div>
+            </div>
+
+            <!-- CONTENT #3: AMAZON PROOF -->
+            <div class="glass-panel p-8 md:p-12 rounded-2xl shadow-2xl relative border-t-4 border-kkyellow">
+                <h3 class="text-2xl md:text-3xl font-black text-white mb-6 uppercase tracking-wide">Don't Just Take Our Word For It. <span class="text-kkyellow">Look At The Cold, Hard Proof.</span></h3>
+                <div class="text-gray-300 space-y-4 text-lg">
+                    <p>While other software creators hide behind fake pen names and stock photos, we operate entirely in the light.</p>
+                    <p class="font-bold text-white bg-kkblack/50 p-4 rounded-lg border border-gray-700">Go to Amazon right now and search for our brand: <span class="text-kkyellow">"Dazzle Mind"</span>.</p>
+                    <p>What you will see is an entire catalog of premium, highly profitable puzzle and activity books. And what do they all have in common?</p>
+                    <ul class="list-none space-y-4 my-6 bg-kkpurple-900/40 p-6 rounded-xl border border-kkpurple-600/30">
+                        <li class="flex items-start"><span class="text-green-400 mr-3 text-xl">✅</span> <span>They were ALL created using the exact <strong>[TOOL NAME]</strong> engine you are getting today.</span></li>
+                        <li class="flex items-start"><span class="text-green-400 mr-3 text-xl">✅</span> <span>They consistently boast a <strong>4.5+ Star Rating</strong> from verified, paying customers.</span></li>
+                        <li class="flex items-start"><span class="text-green-400 mr-3 text-xl">✅</span> <span>They dominate their niches because they don't look like the "cheap PDF slop" other tools spit out.</span></li>
+                    </ul>
+                    <p class="text-gray-400 italic text-sm">Try searching for the "creators" of those other software tools on Amazon. You will find absolutely NOTHING.</p>
+                    <p class="font-bold text-xl text-white mt-6 pb-6">They build software to sell to you. We built software to sell books. And now, we are handing you our most guarded secret weapon.</p>
+                </div>
+
+                <!-- MEDIA NOTE #3: ẢNH LIST CÁC SẢN PHẨM -->
+                <div class="border border-gray-700 rounded-xl p-4 bg-kkblack relative max-w-full overflow-hidden mt-4">
+                    <div class="absolute top-2 left-2 bg-kkpurple-600 text-white text-[10px] font-bold px-2 py-1 rounded z-10">MEDIA NOTE 3: AMAZON PROOF</div>
+                    <div class="flex flex-col md:flex-row gap-6 p-4 items-center justify-center pt-8">
+                        <!-- Book Mockup 1 -->
+                        <div class="w-32 flex flex-col items-center transform transition hover:scale-105 cursor-pointer">
+                            <div class="w-28 h-40 bg-gradient-to-br from-indigo-500 to-purple-600 rounded shadow-[0_10px_20px_rgba(0,0,0,0.5)] mb-3 flex items-center justify-center text-white font-bold text-center text-sm border-l-4 border-indigo-900">Word Search Vol 1</div>
+                            <div class="text-xs font-bold text-white bg-kkred px-2 py-0.5 rounded mb-1">Dazzle Mind</div>
+                            <div class="text-kkyellow text-xs font-bold bg-yellow-900/50 px-2 py-0.5 rounded border border-yellow-700">⭐⭐⭐⭐⭐ 4.8</div>
                         </div>
-                        <div class="w-full bg-white border-2 border-dashed border-indigo-300 h-32 flex items-center justify-center text-indigo-700 font-bold text-lg relative z-10">
-                            <span class="animate-pulse">|</span> Clicking & Editing Live...
+                        <!-- Book Mockup 2 -->
+                        <div class="w-32 flex flex-col items-center transform transition hover:scale-105 cursor-pointer">
+                            <div class="w-28 h-40 bg-gradient-to-br from-pink-500 to-rose-600 rounded shadow-[0_10px_20px_rgba(0,0,0,0.5)] mb-3 flex items-center justify-center text-white font-bold text-center text-sm border-l-4 border-pink-900">Shape Puzzles</div>
+                            <div class="text-xs font-bold text-white bg-kkred px-2 py-0.5 rounded mb-1">Dazzle Mind</div>
+                            <div class="text-kkyellow text-xs font-bold bg-yellow-900/50 px-2 py-0.5 rounded border border-yellow-700">⭐⭐⭐⭐⭐ 4.6</div>
+                        </div>
+                        <!-- Book Mockup 3 -->
+                        <div class="w-32 flex flex-col items-center transform transition hover:scale-105 cursor-pointer">
+                            <div class="w-28 h-40 bg-gradient-to-br from-emerald-500 to-teal-600 rounded shadow-[0_10px_20px_rgba(0,0,0,0.5)] mb-3 flex items-center justify-center text-white font-bold text-center text-sm border-l-4 border-emerald-900">Activity Book</div>
+                            <div class="text-xs font-bold text-white bg-kkred px-2 py-0.5 rounded mb-1">Dazzle Mind</div>
+                            <div class="text-kkyellow text-xs font-bold bg-yellow-900/50 px-2 py-0.5 rounded border border-yellow-700">⭐⭐⭐⭐⭐ 4.9</div>
                         </div>
                     </div>
-                    <p class="text-center font-bold text-green-700 mt-4">Our LIVE CANVAS (100% Editable)</p>
+                    <p class="text-center font-bold text-kkyellow mt-4 uppercase tracking-wider text-sm">Real Books. Real 4.5+ Star Reviews. Real Profits.</p>
                 </div>
-            </div>
-
-            <!-- CONTENT #2 -->
-            <div class="text-lg text-slate-800 mb-12 font-serif">
-                <p class="mb-4">The "Tech Guys" who built those tools don't care. They are coders, not sellers. They don't know that Amazon creates "Duplicate Content" flags. They don't know that readers hate boring square grids.</p>
-                <p class="mb-4">I realized: If I wanted to survive on KDP, I needed CONTROL.</p>
-                <p class="mb-4 font-bold bg-yellow-200 inline-block px-2">I needed to own the SOURCE CODE of my puzzles. (Tôi cần sở hữu MÃ NGUỒN của các câu đố.)</p>
-                <p class="mb-4">I needed to create SHAPES (Hearts, Dogs, Trees) to stand out.</p>
-                <p class="mb-4">But that tool didn't exist. So I built it.</p>
-                <p class="text-2xl font-bold text-center mt-8 text-indigo-900">Introducing [TOOL NAME]...</p>
-                <p class="text-xl font-bold text-center text-indigo-700">The World’s First Word Search Engine Built By Sellers, FOR Sellers.</p>
-            </div>
-
-            <!-- CONTENT #3 -->
-            <div class="bg-slate-900 text-white p-8 rounded-xl shadow-2xl mb-8">
-                <h3 class="text-2xl font-bold text-amber-500 mb-6">Don't Just Take Our Word For It. Look At The Cold, Hard Proof.</h3>
-                <p class="mb-4">While other software creators hide behind fake pen names and stock photos, we operate entirely in the light.</p>
-                <p class="mb-4 font-bold">Go to Amazon right now and search for our brand: "Dazzle Mind".</p>
-                <p class="mb-4">What you will see is an entire catalog of premium, highly profitable puzzle and activity books. And what do they all have in common?</p>
-                <ul class="list-none space-y-3 mb-6">
-                    <li><span class="text-green-400 mr-2">✅</span> They were ALL created using the exact [TOOL NAME] engine you are getting today.</li>
-                    <li><span class="text-green-400 mr-2">✅</span> They consistently boast a 4.5+ Star Rating from verified, paying customers.</li>
-                    <li><span class="text-green-400 mr-2">✅</span> They dominate their niches because they don't look like the "cheap PDF slop" other tools spit out.</li>
-                </ul>
-                <p class="mb-4 text-slate-300 italic">Try searching for the "creators" of those other software tools on Amazon. You will find absolutely NOTHING.</p>
-                <p class="font-bold text-xl text-amber-400">They build software to sell to you. We built software to sell books. And now, we are handing you our most guarded secret weapon.</p>
-            </div>
-
-            <!-- MEDIA NOTE #3: ẢNH LIST CÁC SẢN PHẨM -->
-            <div class="border-4 border-slate-200 rounded-lg p-2 bg-slate-100 relative max-w-3xl mx-auto">
-                <div class="absolute top-2 left-2 bg-indigo-500 text-white text-xs font-bold px-2 py-1 rounded z-10">MEDIA NOTE 3: AMAZON PROOF</div>
-                <div class="bg-white flex flex-col md:flex-row gap-4 p-4 rounded items-center">
-                    <!-- Book Mockup 1 -->
-                    <div class="w-32 flex flex-col items-center">
-                        <div class="w-24 h-32 bg-indigo-600 rounded-sm shadow-md mb-2 flex items-center justify-center text-white font-bold text-center text-xs border-l-4 border-indigo-800">Word Search Vol 1</div>
-                        <div class="text-xs font-bold border-2 border-red-500 rounded px-1 mb-1">Dazzle Mind</div>
-                        <div class="text-yellow-500 text-xs bg-yellow-100 px-1 rounded">⭐⭐⭐⭐⭐ 4.8</div>
-                    </div>
-                    <!-- Book Mockup 2 -->
-                    <div class="w-32 flex flex-col items-center">
-                        <div class="w-24 h-32 bg-purple-600 rounded-sm shadow-md mb-2 flex items-center justify-center text-white font-bold text-center text-xs border-l-4 border-purple-800">Shape Puzzles</div>
-                        <div class="text-xs font-bold border-2 border-red-500 rounded px-1 mb-1">Dazzle Mind</div>
-                        <div class="text-yellow-500 text-xs bg-yellow-100 px-1 rounded">⭐⭐⭐⭐⭐ 4.6</div>
-                    </div>
-                    <!-- Book Mockup 3 -->
-                    <div class="w-32 flex flex-col items-center">
-                        <div class="w-24 h-32 bg-emerald-600 rounded-sm shadow-md mb-2 flex items-center justify-center text-white font-bold text-center text-xs border-l-4 border-emerald-800">Activity Book</div>
-                        <div class="text-xs font-bold border-2 border-red-500 rounded px-1 mb-1">Dazzle Mind</div>
-                        <div class="text-yellow-500 text-xs bg-yellow-100 px-1 rounded">⭐⭐⭐⭐⭐ 4.9</div>
-                    </div>
-                </div>
-                <p class="text-center font-bold text-slate-700 mt-2">Real Books. Real 4.5+ Star Reviews. Real Profits. Built with [TOOL NAME].</p>
             </div>
 
         </div>
     </section>
 
     <!-- PHẦN 4: THE MECHANISM -->
-    <section class="bg-slate-50 py-16 px-4 border-t border-b border-slate-200">
+    <section id="mechanism" class="bg-kkblack py-24 px-4 border-t border-gray-900">
         <div class="max-w-6xl mx-auto text-center">
-            <!-- SUB-HEADLINE -->
-            <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 mb-12">
-                Stop Guessing. Start Designing. Create A 100-Page 'Publisher-Quality' Book In 4 Clicks Inside Our 'Live Studio' Dashboard.
+            <h2 class="text-3xl md:text-5xl font-black text-white mb-6 uppercase tracking-wide">
+                Stop Guessing. <span class="text-kkyellow">Start Designing.</span>
             </h2>
+            <p class="text-xl md:text-2xl text-gray-400 mb-16 font-medium max-w-4xl mx-auto">
+                Create A 100-Page 'Publisher-Quality' Book In <span class="text-white font-bold">4 Clicks</span> Inside Our 'Live Studio' Dashboard.
+            </p>
 
             <!-- MEDIA NOTE #4: 4 MEDIA NGANG -->
-            <div class="relative pt-8">
-                <div class="absolute top-0 left-4 bg-indigo-500 text-white text-xs font-bold px-2 py-1 rounded z-10">MEDIA NOTE 4: 4 HORIZONTAL UI MOCKUPS</div>
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                    
+            <div class="relative pt-6">
+                <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-kkpurple-600 text-white text-[10px] font-bold px-3 py-1 rounded-full z-10 tracking-widest uppercase shadow-lg">MEDIA NOTE 4: HORIZONTAL UI MOCKUPS</div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
                     <!-- STEP 1 -->
-                    <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-indigo-500 text-left hover:shadow-xl transition relative group">
-                        <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center font-bold text-xl mb-4 group-hover:bg-indigo-500 group-hover:text-white transition">1</div>
-                        <div class="h-24 bg-slate-100 rounded border border-slate-200 mb-4 p-2 overflow-hidden text-xs text-slate-400 font-mono">
-                            <span class="block bg-slate-200 w-3/4 h-2 mb-2 rounded"></span>
+                    <div class="glass-panel p-6 rounded-2xl border-t-4 border-t-kkpurple-600 hover:-translate-y-2 transition duration-300 group">
+                        <div class="w-14 h-14 bg-kkpurple-900 border border-kkpurple-600 text-kkyellow rounded-full flex items-center justify-center font-black text-2xl mb-6 shadow-[0_0_15px_rgba(124,58,237,0.5)] group-hover:bg-kkyellow group-hover:text-kkblack transition">1</div>
+                        <div class="h-28 bg-black/50 rounded-lg border border-gray-700 mb-5 p-3 overflow-hidden text-xs text-green-400 font-mono relative">
+                            <span class="block bg-gray-800 w-3/4 h-2 mb-2 rounded"></span>
                             > Select "Animals"<br>
                             > Generating Words...<br>
-                            [Dog, Cat, Bird...]
+                            [Dog, Cat, Bird...]<span class="animate-pulse">_</span>
                         </div>
-                        <h4 class="font-bold text-lg text-slate-900 mb-2">STEP 1: THE CONTENT INJECTION</h4>
-                        <p class="text-sm text-slate-600 mb-2">Select a topic from our 500+ DFY Library or let the AI generate fresh words for you.</p>
-                        <p class="text-sm font-bold text-indigo-600">- The "Kreator" Advantage: No more Writer's Block. Instant Content.</p>
+                        <h4 class="font-black text-lg text-white mb-2 uppercase tracking-wide">THE CONTENT INJECTION</h4>
+                        <p class="text-sm text-gray-400 mb-3 leading-relaxed">Select a topic from our 500+ DFY Library or let the AI generate fresh words for you.</p>
+                        <p class="text-sm font-bold text-kkyellow bg-yellow-900/20 p-2 rounded border border-yellow-900/50">- The "Kreator" Advantage: No more Writer's Block. Instant Content.</p>
                     </div>
 
                     <!-- STEP 2 -->
-                    <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-indigo-500 text-left hover:shadow-xl transition relative group">
-                        <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center font-bold text-xl mb-4 group-hover:bg-indigo-500 group-hover:text-white transition">2</div>
-                        <div class="h-24 bg-slate-100 rounded border border-slate-200 mb-4 p-2 flex items-center justify-center relative">
-                            <div class="w-16 h-16 border-2 border-dashed border-indigo-400 grid grid-cols-3 gap-0.5 p-0.5 animate-pulse">
-                                <div class="bg-indigo-200"></div><div class="bg-indigo-200"></div><div class="bg-indigo-200"></div>
-                                <div class="bg-indigo-200"></div><div class="bg-indigo-200"></div><div class="bg-indigo-200"></div>
+                    <div class="glass-panel p-6 rounded-2xl border-t-4 border-t-kkpurple-600 hover:-translate-y-2 transition duration-300 group">
+                        <div class="w-14 h-14 bg-kkpurple-900 border border-kkpurple-600 text-kkyellow rounded-full flex items-center justify-center font-black text-2xl mb-6 shadow-[0_0_15px_rgba(124,58,237,0.5)] group-hover:bg-kkyellow group-hover:text-kkblack transition">2</div>
+                        <div class="h-28 bg-black/50 rounded-lg border border-gray-700 mb-5 p-3 flex items-center justify-center relative overflow-hidden">
+                            <div class="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.05)_50%,transparent_75%)] bg-[length:20px_20px]"></div>
+                            <div class="w-16 h-16 border-2 border-dashed border-kkpurple-400 grid grid-cols-3 gap-0.5 p-0.5 relative z-10">
+                                <div class="bg-kkpurple-600/50"></div><div class="bg-kkpurple-600/50"></div><div class="bg-kkpurple-600/50"></div>
+                                <div class="bg-kkpurple-600/50"></div><div class="bg-kkyellow/80"></div><div class="bg-kkpurple-600/50"></div>
                             </div>
                         </div>
-                        <h4 class="font-bold text-lg text-slate-900 mb-2">STEP 2: THE "LIVE" KREATOR STUDIO</h4>
-                        <p class="text-sm text-slate-600 mb-2">This is where the magic happens. Click "Preview Theme" and tweak your layout IN REAL-TIME.</p>
-                        <p class="text-sm font-bold text-indigo-600">- Customize Everything: Grid lines, Solution circles, Colors, Margins... tweak it all LIVE on the screen. No need to export to see the result!</p>
+                        <h4 class="font-black text-lg text-white mb-2 uppercase tracking-wide">THE "LIVE" KREATOR STUDIO</h4>
+                        <p class="text-sm text-gray-400 mb-3 leading-relaxed">This is where the magic happens. Click "Preview Theme" and tweak your layout IN REAL-TIME.</p>
+                        <p class="text-sm font-bold text-kkyellow bg-yellow-900/20 p-2 rounded border border-yellow-900/50">- Customize Everything: Grid lines, Solution circles, Colors, Margins... LIVE.</p>
                     </div>
 
                     <!-- STEP 3 -->
-                    <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-indigo-500 text-left hover:shadow-xl transition relative group">
-                        <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center font-bold text-xl mb-4 group-hover:bg-indigo-500 group-hover:text-white transition">3</div>
-                        <div class="h-24 bg-slate-100 rounded border border-slate-200 mb-4 p-2 flex justify-center items-center gap-1">
-                            <div class="w-8 h-12 bg-white border border-slate-300 shadow-sm relative"><div class="absolute inset-x-1 top-2 h-1 bg-indigo-400"></div></div>
-                            <span class="text-xs">➜</span>
-                            <div class="w-8 h-12 bg-white border border-slate-300 shadow-sm relative opacity-80"><div class="absolute inset-x-1 top-2 h-1 bg-indigo-400"></div></div>
-                            <div class="w-8 h-12 bg-white border border-slate-300 shadow-sm relative opacity-60"><div class="absolute inset-x-1 top-2 h-1 bg-indigo-400"></div></div>
-                            <div class="w-8 h-12 bg-white border border-slate-300 shadow-sm relative opacity-40"><div class="absolute inset-x-1 top-2 h-1 bg-indigo-400"></div></div>
+                    <div class="glass-panel p-6 rounded-2xl border-t-4 border-t-kkpurple-600 hover:-translate-y-2 transition duration-300 group">
+                        <div class="w-14 h-14 bg-kkpurple-900 border border-kkpurple-600 text-kkyellow rounded-full flex items-center justify-center font-black text-2xl mb-6 shadow-[0_0_15px_rgba(124,58,237,0.5)] group-hover:bg-kkyellow group-hover:text-kkblack transition">3</div>
+                        <div class="h-28 bg-black/50 rounded-lg border border-gray-700 mb-5 p-3 flex justify-center items-center gap-2">
+                            <div class="w-8 h-12 bg-white rounded-sm relative shadow-[0_0_10px_rgba(255,255,255,0.2)]"><div class="absolute inset-x-1 top-2 h-1 bg-kkpurple-600"></div></div>
+                            <span class="text-kkyellow animate-pulse">➜</span>
+                            <div class="relative w-12 h-16">
+                                <div class="absolute top-0 right-0 w-8 h-12 bg-white rounded-sm opacity-40"><div class="absolute inset-x-1 top-2 h-1 bg-kkpurple-600"></div></div>
+                                <div class="absolute top-2 right-2 w-8 h-12 bg-white rounded-sm opacity-70"><div class="absolute inset-x-1 top-2 h-1 bg-kkpurple-600"></div></div>
+                                <div class="absolute top-4 right-4 w-8 h-12 bg-white rounded-sm shadow-[0_0_10px_rgba(255,255,255,0.2)]"><div class="absolute inset-x-1 top-2 h-1 bg-kkpurple-600"></div></div>
+                            </div>
                         </div>
-                        <h4 class="font-bold text-lg text-slate-900 mb-2">STEP 3: THE "ONE-CLICK" CLONE</h4>
-                        <p class="text-sm text-slate-600 mb-2">Made the perfect layout for Page 1? Hit "Apply To Full Book".</p>
-                        <p class="text-sm font-bold text-indigo-600">- The Scale Power: Instantly format ALL 100 pages to match your design. Consistent, professional, and lightning-fast.</p>
+                        <h4 class="font-black text-lg text-white mb-2 uppercase tracking-wide">THE "ONE-CLICK" CLONE</h4>
+                        <p class="text-sm text-gray-400 mb-3 leading-relaxed">Made the perfect layout for Page 1? Hit "Apply To Full Book".</p>
+                        <p class="text-sm font-bold text-kkyellow bg-yellow-900/20 p-2 rounded border border-yellow-900/50">- The Scale Power: Instantly format ALL 100 pages to match your design.</p>
                     </div>
 
                     <!-- STEP 4 -->
-                    <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-indigo-500 text-left hover:shadow-xl transition relative group">
-                        <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center font-bold text-xl mb-4 group-hover:bg-indigo-500 group-hover:text-white transition">4</div>
-                        <div class="h-24 bg-slate-100 rounded border border-slate-200 mb-4 p-2 flex items-center justify-center gap-2">
-                            <button class="bg-red-500 text-white text-xs font-bold py-2 px-3 rounded shadow">PDF</button>
-                            <button class="bg-blue-500 text-white text-xs font-bold py-2 px-3 rounded shadow">PNG</button>
+                    <div class="glass-panel p-6 rounded-2xl border-t-4 border-t-kkpurple-600 hover:-translate-y-2 transition duration-300 group">
+                        <div class="w-14 h-14 bg-kkpurple-900 border border-kkpurple-600 text-kkyellow rounded-full flex items-center justify-center font-black text-2xl mb-6 shadow-[0_0_15px_rgba(124,58,237,0.5)] group-hover:bg-kkyellow group-hover:text-kkblack transition">4</div>
+                        <div class="h-28 bg-black/50 rounded-lg border border-gray-700 mb-5 p-3 flex items-center justify-center gap-3">
+                            <div class="bg-kkred text-white text-xs font-bold py-2 px-3 rounded shadow-[0_0_10px_rgba(239,68,68,0.4)]">PDF</div>
+                            <div class="bg-blue-500 text-white text-xs font-bold py-2 px-3 rounded shadow-[0_0_10px_rgba(59,130,246,0.4)]">PNG</div>
                         </div>
-                        <h4 class="font-bold text-lg text-slate-900 mb-2">STEP 4: EXPORT YOUR WAY</h4>
-                        <p class="text-sm text-slate-600 mb-2">Already perfect? Export a KDP-Ready PDF. Want to add more flair? Export to PNG.</p>
-                        <p class="text-sm font-bold text-indigo-600">- Ultimate Freedom: You own the source file.</p>
+                        <h4 class="font-black text-lg text-white mb-2 uppercase tracking-wide">EXPORT YOUR WAY</h4>
+                        <p class="text-sm text-gray-400 mb-3 leading-relaxed">Already perfect? Export a KDP-Ready PDF. Want to add more flair? Export to PNG.</p>
+                        <p class="text-sm font-bold text-kkyellow bg-yellow-900/20 p-2 rounded border border-yellow-900/50">- Ultimate Freedom: You own the source file.</p>
                     </div>
-
                 </div>
             </div>
         </div>
     </section>
 
     <!-- PHẦN 5: THE USP STACK -->
-    <section class="bg-white py-16 px-4">
-        <div class="max-w-5xl mx-auto">
-            <!-- SUB-HEADLINE -->
-            <h2 class="text-3xl md:text-5xl font-extrabold text-center text-slate-900 mb-16">
-                Why [TOOL NAME] Makes Every Other Generator Obsolete...
+    <section id="features" class="bg-gradient-to-b from-kkblack to-kkpurple-900 py-24 px-4 border-t border-gray-900">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-center text-white mb-20 uppercase tracking-tighter">
+                Why [TOOL NAME] Makes Every Other Generator <span class="text-kkred">Obsolete</span>...
             </h2>
 
-            <!-- FEATURE 1 -->
-            <div class="mb-16 border-b border-slate-200 pb-16">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-                    <div>
-                        <h3 class="text-2xl font-bold text-slate-900 mb-4">🔥 FEATURE #1: THE "LIVE STUDIO" & PERFECT PDF ENGINE</h3>
-                        <p class="text-lg font-bold text-slate-700 mb-4">Why waste time fixing broken files? Perfect your layout in real-time.</p>
-                        <ul class="space-y-4 mb-6 text-slate-600">
-                            <li><strong class="text-red-600">- The Old Way:</strong> Download a generic PDF, realize it looks ugly, and spend hours trying to edit it in Canva or Illustrator.</li>
-                            <li><strong class="text-indigo-600">- The KreatorKits Way:</strong> Edit everything directly inside our browser-based Live Studio. Change fonts, adjust grid rows, tweak margins, and instantly click "Preview Theme" to see exactly how your book looks. Once it's a masterpiece, hit "Full Book" to apply your custom design to all 100 pages in one click!</li>
-                        </ul>
-                        <div class="bg-green-100 border-l-4 border-green-500 p-4 rounded text-green-800 font-bold">
-                            => BENEFIT: You export a 100% KDP-Ready PDF that requires ZERO extra editing. Go straight from our tool to publishing on Amazon in under 3 minutes.
-                        </div>
+            <!-- FEATURE 1 & 2 (Grid 2 cols) -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+                <!-- F1 -->
+                <div class="glass-panel p-8 rounded-2xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-kkred text-white text-[10px] font-bold px-2 py-1 rounded-bl z-10">MEDIA NOTE 5: COMPARISON</div>
+                    <h3 class="text-2xl font-black text-white mb-3 uppercase flex items-center"><span class="bg-kkyellow text-kkblack w-8 h-8 rounded flex items-center justify-center mr-3 text-lg">1</span> LIVE STUDIO & PERFECT PDF</h3>
+                    <p class="text-lg font-bold text-gray-300 mb-4">Why waste time fixing broken files? Perfect your layout in real-time.</p>
+                    <div class="space-y-4 text-gray-400 text-sm mb-6">
+                        <p><strong class="text-kkred">❌ The Old Way:</strong> Download generic PDF, looks ugly, spend hours editing in Canva.</p>
+                        <p><strong class="text-kkyellow">✅ The KreatorKits Way:</strong> Edit directly in browser. Change fonts, tweak margins, hit "Full Book" to apply to 100 pages in 1 click!</p>
                     </div>
-                    <!-- MEDIA NOTE #5: ẢNH SO SÁNH SÁCH -->
-                    <div class="relative bg-slate-100 p-4 rounded-xl shadow-inner border border-slate-200 flex gap-4 h-80">
-                         <div class="absolute top-0 right-0 bg-slate-800 text-white text-xs font-bold px-2 py-1 rounded-bl z-10">MEDIA NOTE 5: BOOK COMPARISON</div>
-                         <!-- Xấu -->
-                         <div class="w-1/2 bg-white shadow-md border border-slate-300 flex flex-col p-2 relative">
-                             <div class="absolute inset-0 bg-red-500/10 z-10 flex items-center justify-center opacity-0 hover:opacity-100 transition"><span class="bg-red-600 text-white font-bold px-2 rounded">LOW SALES</span></div>
-                             <div class="h-4 w-1/2 bg-slate-200 mb-2 mx-auto"></div>
-                             <div class="flex-grow border-2 border-slate-300 grid grid-cols-5 gap-1 p-1"><div class="bg-slate-200"></div><div class="bg-slate-200"></div><div class="bg-slate-200"></div></div>
-                             <p class="text-center text-xs text-slate-500 mt-2 font-bold">Others: Boring, $8.99 Book</p>
-                         </div>
-                         <!-- Đẹp -->
-                         <div class="w-1/2 bg-white shadow-xl border-2 border-indigo-400 flex flex-col p-2 relative transform scale-105 z-20">
-                             <div class="h-6 w-3/4 bg-indigo-200 mb-2 mx-auto rounded-full text-[8px] text-center leading-6 font-bold text-indigo-700 uppercase">Space Theme</div>
-                             <!-- Decorative elements simulation -->
-                             <div class="absolute top-10 left-2 w-4 h-4 rounded-full border-2 border-amber-400"></div>
-                             <div class="flex-grow border-2 border-dashed border-indigo-400 grid grid-cols-5 gap-0.5 p-1 rounded"><div class="bg-indigo-100 rounded"></div><div class="bg-indigo-100 rounded"></div></div>
-                             <div class="mt-2 h-4 w-full bg-slate-100 flex justify-between px-1"><span class="w-8 bg-slate-300 rounded"></span><span class="w-8 bg-slate-300 rounded"></span></div>
-                             <p class="text-center text-xs text-green-600 mt-2 font-bold">You: Viral, $12.99 Book</p>
-                         </div>
+                    <div class="bg-green-900/30 border-l-4 border-green-500 p-4 rounded text-green-400 font-bold text-sm">
+                        => BENEFIT: Export a 100% KDP-Ready PDF. Zero extra editing. Publish in under 3 mins.
+                    </div>
+                </div>
+                <!-- F2 -->
+                <div class="glass-panel p-8 rounded-2xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-kkred text-white text-[10px] font-bold px-2 py-1 rounded-bl z-10">MEDIA NOTE 6: VISUAL ENGINE UI</div>
+                    <h3 class="text-2xl font-black text-white mb-3 uppercase flex items-center"><span class="bg-kkyellow text-kkblack w-8 h-8 rounded flex items-center justify-center mr-3 text-lg">2</span> PREMIUM ACTIVITY ENGINE</h3>
+                    <p class="text-lg font-bold text-gray-300 mb-4">Why sell a book for $8.99 when you can sell it for $12.99?</p>
+                    <div class="space-y-4 text-gray-400 text-sm mb-6">
+                        <p><strong class="text-kkred">❌ The Problem:</strong> Plain text on white paper looks cheap.</p>
+                        <p><strong class="text-kkyellow">✅ The Solution:</strong> Upload custom Background Images behind grids. Add Image Elements (black/white vectors) for customers to COLOR!</p>
+                    </div>
+                    <div class="bg-green-900/30 border-l-4 border-green-500 p-4 rounded text-green-400 font-bold text-sm">
+                        => BENEFIT: Cross over into the "Coloring Book" niche. Parents happily pay double for added value.
                     </div>
                 </div>
             </div>
 
-            <!-- FEATURE 2 -->
-            <div class="mb-16 border-b border-slate-200 pb-16">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-                    <div class="order-2 md:order-1">
-                        <!-- MEDIA NOTE #6: ẢNH/GIF Chỗ thiết kế layout -->
-                        <div class="bg-slate-800 rounded-xl aspect-video flex items-center justify-center relative shadow-xl overflow-hidden">
-                             <div class="absolute top-0 left-0 bg-slate-600 text-white text-xs font-bold px-2 py-1 rounded-br z-10">MEDIA NOTE 6: LAYOUT UI GIF</div>
-                             <div class="w-full h-full p-4 flex">
-                                 <div class="w-1/3 border-r border-slate-600 pr-4 space-y-2">
-                                     <div class="h-4 bg-slate-700 rounded w-full"></div>
-                                     <div class="h-8 bg-indigo-600 rounded w-full flex items-center justify-center text-xs text-white">Upload Background</div>
-                                     <div class="h-4 bg-slate-700 rounded w-3/4"></div>
-                                 </div>
-                                 <div class="w-2/3 pl-4 flex items-center justify-center">
-                                     <div class="w-32 h-40 bg-white shadow flex flex-col relative">
-                                         <span class="absolute right-0 top-0 text-3xl opacity-20">🦖</span>
-                                         <div class="mt-8 mx-auto w-24 h-24 border border-slate-200 grid grid-cols-3"></div>
-                                     </div>
-                                 </div>
-                             </div>
-                        </div>
+            <!-- FEATURE 3 & 4 (Grid 2 cols) -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+                <!-- F3 -->
+                <div class="glass-panel p-8 rounded-2xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-kkred text-white text-[10px] font-bold px-2 py-1 rounded-bl z-10">MEDIA NOTE 7: HEADER/FOOTER</div>
+                    <h3 class="text-2xl font-black text-white mb-3 uppercase flex items-center"><span class="bg-kkyellow text-kkblack w-8 h-8 rounded flex items-center justify-center mr-3 text-lg">3</span> MAGAZINE-QUALITY FORMATTER</h3>
+                    <p class="text-lg font-bold text-gray-300 mb-4">Publish books crafted like a traditional publishing house.</p>
+                    <div class="space-y-4 text-gray-400 text-sm mb-6">
+                        <p><strong class="text-kkred">❌ The Amateur Trap:</strong> No page numbers, missing titles = 1-star reviews.</p>
+                        <p><strong class="text-kkyellow">✅ The Fix:</strong> Dynamic Header & Footer Engine. Set variables like {TOPIC} at the top, {PAGE_NUM} at the bottom. Applied instantly.</p>
                     </div>
-                    <div class="order-1 md:order-2">
-                        <h3 class="text-2xl font-bold text-slate-900 mb-4">🔥 FEATURE #2: THE "PREMIUM ACTIVITY" VISUAL ENGINE</h3>
-                        <p class="text-lg font-bold text-slate-700 mb-4">Why sell a book for $8.99 when you can sell it for $12.99?</p>
-                        <ul class="space-y-4 mb-6 text-slate-600">
-                            <li><strong class="text-red-600">- The Problem:</strong> Buyers are tired of plain text on white paper. It looks cheap.</li>
-                            <li><strong class="text-indigo-600">- The [TOOL NAME] Solution:</strong> We give you a full visual decorator! You can upload your own custom Background Images to sit beautifully behind the puzzle grids. But it gets better: You can add Image Elements (like black-and-white vector graphics) right onto the page for your customers to COLOR!</li>
-                        </ul>
-                        <div class="bg-green-100 border-l-4 border-green-500 p-4 rounded text-green-800 font-bold">
-                            => BENEFIT: You instantly cross over into the highly profitable "Coloring Book" niche. Add a cute dinosaur graphic next to a Dinosaur Word Search, and parents will happily pay double for the added value.
-                        </div>
+                    <div class="bg-green-900/30 border-l-4 border-green-500 p-4 rounded text-green-400 font-bold text-sm">
+                        => BENEFIT: Instant Authority & 5-Star Proofing. Save hours of formatting hell.
+                    </div>
+                </div>
+                <!-- F4 -->
+                <div class="glass-panel p-8 rounded-2xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-kkred text-white text-[10px] font-bold px-2 py-1 rounded-bl z-10">SOLUTION BUILDER UI</div>
+                    <h3 class="text-2xl font-black text-white mb-3 uppercase flex items-center"><span class="bg-kkyellow text-kkblack w-8 h-8 rounded flex items-center justify-center mr-3 text-lg">4</span> 1-CLICK SMART SOLUTIONS</h3>
+                    <p class="text-lg font-bold text-gray-300 mb-4">Automate the 5-Star Review process.</p>
+                    <div class="space-y-4 text-gray-400 text-sm mb-6">
+                        <p><strong class="text-kkred">❌ The Nightmare:</strong> Formatting "Solutions" manually leads to mistakes.</p>
+                        <p><strong class="text-kkyellow">✅ The Fix:</strong> Smart Styling Engine. Choose 4 or 6 solutions per page, customize highlight styling (Solid, Circled). Generates instantly.</p>
+                    </div>
+                    <div class="bg-green-900/30 border-l-4 border-green-500 p-4 rounded text-green-400 font-bold text-sm">
+                        => BENEFIT: Guarantee readers a flawless, frustration-free experience.
                     </div>
                 </div>
             </div>
 
-            <!-- FEATURE 3 -->
-            <div class="mb-16 border-b border-slate-200 pb-16">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-                    <div>
-                        <h3 class="text-2xl font-bold text-slate-900 mb-4">🔥 FEATURE #3: THE "MAGAZINE-QUALITY" FORMATTER</h3>
-                        <p class="text-lg font-bold text-slate-700 mb-4">Publish books that look like they were crafted by a traditional publishing house... without touching InDesign.</p>
-                        <ul class="space-y-4 mb-6 text-slate-600">
-                            <li><strong class="text-red-600">- The "Amateur" Trap:</strong> Amazon reviewers are ruthless. If your puzzle book lacks page numbers, or if the puzzle titles are missing, buyers will leave 1-star reviews complaining that the book is "hard to use" and "looks cheap". But manually typing 100 different topic titles and adding page numbers to every single PDF page? That takes hours of tedious, mind-numbing work.</li>
-                            <li><strong class="text-indigo-600">- The KreatorKits Fix:</strong> We automated the professional polish. Our Dynamic Header & Footer Engine does the heavy lifting for you. Using smart variables, you can set it up once and apply it to the entire book instantly.<br>
-                            Want the specific puzzle topic (e.g., "Space Exploration") to automatically appear at the top of its page? Done. Want auto-calculating page numbers perfectly centered at the bottom? Done. Adjust the fonts, sizes, and alignment globally in seconds.</li>
-                        </ul>
-                        <div class="bg-green-100 border-l-4 border-green-500 p-4 rounded text-green-800 font-bold">
-                            => BENEFIT: Instant Authority & 5-Star Proofing. Your books will look indistinguishable from top-tier, $15 activity books found in real bookstores. You secure glowing reviews for "excellent formatting" while saving yourself hours of formatting hell per book.
-                        </div>
-                    </div>
-                    <!-- MEDIA NOTE #7: ẢNH SOLUTION (Using a visual representation of Header/Footer automation) -->
-                    <div class="bg-slate-100 p-6 rounded-xl border border-slate-300 relative">
-                         <div class="absolute top-0 right-0 bg-slate-800 text-white text-xs font-bold px-2 py-1 rounded-bl z-10">MEDIA NOTE 7: HEADER/FOOTER SOLUTION</div>
-                         <div class="bg-white h-64 shadow-lg border border-slate-200 flex flex-col p-4 relative">
-                             <!-- Header -->
-                             <div class="flex justify-between items-center border-b-2 border-indigo-200 pb-2 mb-4">
-                                 <span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded font-mono animate-pulse">{TOPIC_NAME}</span>
-                                 <span class="text-slate-400 font-serif text-sm">"Space Exploration"</span>
-                             </div>
-                             <!-- Body -->
-                             <div class="flex-grow border border-slate-100 bg-slate-50 flex items-center justify-center text-slate-300">Puzzle Grid</div>
-                             <!-- Footer -->
-                             <div class="flex justify-center items-center pt-4 mt-4 border-t border-slate-100">
-                                 <span class="bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded font-mono animate-pulse">Page {PAGE_NUM}</span>
-                             </div>
-                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- FEATURE 4 (With MEDIA NOTE 8 placed BEFORE Feature 5 as instructed) -->
-            <div class="mb-16 border-b border-slate-200 pb-16">
-                 <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-                    <div class="order-2 md:order-1">
-                         <div class="bg-white p-4 rounded-xl border border-slate-200 shadow relative">
-                             <div class="absolute top-0 left-0 bg-slate-800 text-white text-xs font-bold px-2 py-1 rounded-br z-10">SOLUTION BUILDER UI</div>
-                             <div class="grid grid-cols-2 gap-4 h-48 mt-4">
-                                 <div class="border border-slate-300 flex items-center justify-center p-2 relative bg-slate-50">
-                                     <div class="w-full h-full border border-slate-200 grid grid-cols-3 gap-0.5"><div class="bg-indigo-500 rounded-full"></div></div>
-                                     <span class="absolute bottom-1 right-1 text-xs text-slate-400">Circled</span>
-                                 </div>
-                                 <div class="border border-slate-300 flex items-center justify-center p-2 relative bg-slate-50">
-                                     <div class="w-full h-full border border-slate-200 grid grid-cols-3 gap-0.5"><div class="bg-indigo-300"></div></div>
-                                     <span class="absolute bottom-1 right-1 text-xs text-slate-400">Solid Fill</span>
-                                 </div>
-                             </div>
-                         </div>
-                    </div>
-                    <div class="order-1 md:order-2">
-                        <h3 class="text-2xl font-bold text-slate-900 mb-4">🔥 FEATURE #4: "ONE-CLICK" SMART SOLUTIONS BUILDER</h3>
-                        <p class="text-lg font-bold text-slate-700 mb-4">Buyers hate confusing answer keys. We automate the 5-Star Review process.</p>
-                        <ul class="space-y-4 mb-6 text-slate-600">
-                            <li><strong class="text-red-600">- The Nightmare:</strong> Formatting the "Solutions" section at the back of the book manually takes hours and leads to mistakes.</li>
-                            <li><strong class="text-indigo-600">- The Fix:</strong> With our Smart Styling Engine, choose exactly how you want your solutions displayed. Put 4 or 6 solutions per page, customize the grid scale (%), and pick your highlight styling (Solid, Circled, etc.). It generates perfectly formatted answer keys instantly.</li>
-                        </ul>
-                        <div class="bg-green-100 border-l-4 border-green-500 p-4 rounded text-green-800 font-bold">
-                            => BENEFIT: Save hours per book and guarantee your readers have a flawless, frustration-free experience.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- MEDIA NOTE #8: BEFORE-AFTER (Placed right before Feature 5 per instruction layout) -->
-            <div class="mb-10 max-w-4xl mx-auto">
-                <div class="relative bg-white rounded-xl shadow-lg border-2 border-slate-200 overflow-hidden flex flex-col md:flex-row h-auto md:h-64">
-                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 bg-slate-900 text-white text-xs font-bold px-4 py-1 rounded-b z-20 shadow">MEDIA NOTE 8: SPLIT SCREEN BEFORE/AFTER</div>
+            <!-- MEDIA NOTE #8: BEFORE-AFTER -->
+            <div class="max-w-4xl mx-auto mb-16 relative">
+                <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-kkpurple-600 text-white text-[10px] font-bold px-4 py-1 rounded-full z-20 shadow uppercase tracking-widest">MEDIA NOTE 8: SPLIT SCREEN BEFORE/AFTER</div>
+                <div class="flex flex-col md:flex-row h-auto md:h-64 rounded-2xl overflow-hidden border-2 border-gray-700 shadow-2xl">
                     <!-- Trái -->
-                    <div class="w-full md:w-1/2 bg-red-50 border-r-4 border-slate-900 flex flex-col items-center justify-center p-8 relative grayscale">
-                        <span class="text-6xl mb-4">😫</span>
-                        <div class="w-full bg-white h-20 border border-slate-300 flex flex-col p-1 shadow-inner opacity-70">
-                            <div class="w-full h-3 bg-slate-200 mb-1"></div>
-                            <div class="w-full h-3 bg-slate-200 mb-1"></div>
-                            <div class="w-3/4 h-3 bg-slate-200"></div>
-                        </div>
-                        <p class="absolute bottom-4 bg-red-600 text-white font-bold px-4 py-1 rounded shadow">The Old Way: Days of Research</p>
+                    <div class="w-full md:w-1/2 bg-gray-900 flex flex-col items-center justify-center p-8 relative grayscale border-r-4 border-kkblack">
+                        <span class="text-6xl mb-4 opacity-50">😫</span>
+                        <p class="bg-kkred text-white font-bold px-4 py-1 rounded shadow text-sm">The Old Way: Days of Research</p>
                     </div>
                     <!-- Phải -->
-                    <div class="w-full md:w-1/2 bg-green-50 flex flex-col items-center justify-center p-8 relative">
-                        <span class="text-6xl mb-4">🤩</span>
-                        <div class="w-full bg-white h-20 border border-indigo-300 flex flex-col p-2 shadow-lg relative">
-                            <div class="w-full h-6 bg-indigo-100 border border-indigo-300 rounded flex items-center px-2 cursor-pointer">
-                                <span class="text-xs font-bold text-indigo-800">DFY 500 Topics</span><span class="ml-auto text-xs">▼</span>
-                            </div>
-                            <div class="absolute top-8 left-2 right-2 bg-white border border-slate-200 shadow-xl rounded z-10 p-1">
-                                <div class="text-[10px] p-1 bg-indigo-50 font-bold text-indigo-900">Summer Vacation</div>
-                                <div class="text-[10px] p-1 text-slate-600 hover:bg-slate-100">Deep Space</div>
-                            </div>
-                            <!-- Cursor simulation -->
-                            <span class="absolute top-6 right-6 text-xl animate-bounce">👆</span>
-                        </div>
-                        <p class="absolute bottom-4 bg-green-600 text-white font-bold px-4 py-1 rounded shadow">Our Way: 1-Click Topic Vault</p>
+                    <div class="w-full md:w-1/2 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] bg-kkpurple-900 flex flex-col items-center justify-center p-8 relative">
+                        <div class="absolute inset-0 bg-kkpurple-600/20 mix-blend-overlay"></div>
+                        <span class="text-6xl mb-4 relative z-10 drop-shadow-[0_0_20px_rgba(251,191,36,0.8)]">🤩</span>
+                        <p class="bg-kkyellow text-kkblack font-black px-4 py-1 rounded shadow-[0_0_15px_rgba(251,191,36,0.5)] text-sm relative z-10">Our Way: 1-Click Topic Vault</p>
                     </div>
                 </div>
             </div>
 
-            <!-- FEATURE 5 -->
-            <div class="mb-16 border-b border-slate-200 pb-16">
-                 <div class="grid grid-cols-1 gap-6">
-                    <div>
-                        <h3 class="text-2xl font-bold text-slate-900 mb-4">🔥 FEATURE #5: THE "DFY TOPIC VAULT" (10,000+ Pre-Loaded Keywords)</h3>
-                        <p class="text-lg font-bold text-slate-700 mb-4">Skip the mind-numbing research. We've handed you the keys to an instant puzzle empire.</p>
-                        <ul class="space-y-4 mb-6 text-slate-600">
-                            <li><strong class="text-red-600">- The Brutal Truth:</strong> Generating a puzzle grid is easy. But finding 10,000 unique, correctly-spelled words across 100 different themes? That is a soul-crushing, week-long grind. It’s the #1 reason most KDP publishers give up.</li>
-                            <li><strong class="text-indigo-600">- The KreatorKits Solution:</strong> We eliminated the "Blank Page Syndrome" forever. [TOOL NAME] comes locked and loaded with a DFY Vault of 500+ Hot Selling Topics and over 10,000 Hand-Picked Keywords built right into the dashboard.<br>
-                            No Google searches. No messy spreadsheets. No brain fog.<br>
-                            Want to make a "Summer Vacation" book? Just click the topic from our dropdown menu, hit generate, and watch as your book populates in seconds.</li>
-                        </ul>
-                        <div class="bg-green-100 border-l-4 border-green-500 p-4 rounded text-green-800 font-bold">
-                            => BENEFIT: Total Time Freedom. You bypass the hardest, most boring part of book creation. Buy the tool at 9 AM, and have a massive, research-backed puzzle book live on Amazon by lunchtime.
-                        </div>
+            <!-- FEATURE 5 & 6 (Full Width Stacked) -->
+            <div class="space-y-8">
+                <!-- F5 -->
+                <div class="glass-panel p-8 md:p-10 rounded-2xl">
+                    <h3 class="text-2xl md:text-3xl font-black text-white mb-4 uppercase flex items-center"><span class="bg-kkyellow text-kkblack w-10 h-10 rounded flex items-center justify-center mr-4 text-xl">5</span> THE "DFY TOPIC VAULT" (10,000+ Keywords)</h3>
+                    <p class="text-xl font-bold text-kkyellow mb-4">Skip the mind-numbing research. Instant puzzle empire.</p>
+                    <div class="text-gray-300 space-y-3 mb-6">
+                        <p>Generating a grid is easy. Finding 10,000 unique, correctly-spelled words across 100 themes? Soul-crushing grind.</p>
+                        <p><strong>[TOOL NAME]</strong> comes locked and loaded with 500+ Hot Selling Topics. No Google. No spreadsheets. Want a "Summer Vacation" book? Click, generate, done in seconds.</p>
                     </div>
-                 </div>
-            </div>
-
-            <!-- MEDIA NOTE #9 & FEATURE 6 -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-16">
-                <!-- MEDIA NOTE #9 -->
-                <div class="bg-slate-900 p-4 rounded-xl shadow-2xl relative h-72 flex flex-col">
-                     <div class="absolute top-0 right-0 bg-indigo-500 text-white text-xs font-bold px-2 py-1 rounded-bl z-10">MEDIA NOTE 9: AI GENERATOR GIF</div>
-                     <div class="flex-grow flex flex-col gap-2 pt-6">
-                         <div class="bg-slate-800 p-2 rounded">
-                             <span class="text-xs text-slate-400 block mb-1">Topic</span>
-                             <div class="w-full bg-slate-700 h-8 rounded text-white flex items-center px-2 font-mono text-sm">Medical Terms</div>
-                         </div>
-                         <div class="bg-slate-800 p-2 rounded relative">
-                             <span class="text-xs text-amber-400 block mb-1">Custom Prompt</span>
-                             <div class="w-full bg-slate-700 h-16 rounded text-amber-100 p-2 font-mono text-xs overflow-hidden">
-                                 "Only 1-word terms, maximum 8 letters" <span class="animate-pulse">|</span>
-                             </div>
-                         </div>
-                         <button class="w-full bg-indigo-600 text-white font-bold py-2 rounded mt-auto flex justify-center gap-2">
-                             ✨ Generate <span class="animate-spin text-white opacity-50">↻</span>
-                         </button>
-                     </div>
+                    <div class="bg-green-900/30 border-l-4 border-green-500 p-4 rounded text-green-400 font-bold">
+                        => BENEFIT: Total Time Freedom. Buy the tool at 9 AM, book live on Amazon by lunchtime.
+                    </div>
                 </div>
 
-                <!-- FEATURE 6 -->
-                <div>
-                    <h3 class="text-2xl font-bold text-slate-900 mb-4">🔥 FEATURE #6: THE "CUSTOM-TRAINED" AI NICHE HUNTER (Infinite Content & Ultimate Control)</h3>
-                    <p class="text-lg font-bold text-slate-700 mb-4">Uncover hidden micro-niches and force the AI to follow YOUR exact rules.</p>
-                    <ul class="space-y-4 mb-6 text-slate-600">
-                        <li><strong class="text-red-600">- The Problem:</strong> Using standard AI to generate word lists is a nightmare. It gives you words with hyphens, numbers, or phrases that are way too long to fit in a puzzle grid. You spend more time cleaning up the AI's mess than actually making the book.</li>
-                        <li><strong class="text-indigo-600">- The KreatorKits Magic:</strong> We didn't just plug in a basic AI. We custom-trained our engine specifically for Word Search (WOS) generation so it knows exactly what a perfect puzzle needs. But we didn't stop there. We gave YOU the steering wheel.</li>
-                        <li><strong class="text-amber-600">- The "Custom Prompt" Power:</strong> Got a hyper-specific idea? Enter your niche. Then, use the Custom Prompt Box to add your own strict instructions. Tell the AI: "Only give me 5-letter words" or "Include 90s slang only" or "Translate these medical terms to Spanish". The AI obeys instantly, spitting out a 100% puzzle-ready, flawlessly formatted list.</li>
-                    </ul>
-                    <div class="bg-green-100 border-l-4 border-green-500 p-4 rounded text-green-800 font-bold">
-                        => BENEFIT: Infinite, hyper-targeted content. You can create highly specialized, premium puzzle books that no competitor can copy, and you never have to format a word list manually again.
+                <!-- F6 -->
+                <div class="glass-panel p-8 md:p-10 rounded-2xl relative overflow-hidden border-2 border-kkyellow/30">
+                    <div class="absolute top-0 right-0 bg-kkred text-white text-[10px] font-bold px-3 py-1 rounded-bl z-10">MEDIA NOTE 9: AI GENERATOR GIF</div>
+                    <div class="absolute -right-20 -top-20 w-64 h-64 bg-kkpurple-600 rounded-full blur-[100px] opacity-30"></div>
+                    
+                    <h3 class="text-2xl md:text-3xl font-black text-white mb-4 uppercase flex items-center relative z-10"><span class="bg-kkyellow text-kkblack w-10 h-10 rounded flex items-center justify-center mr-4 text-xl">6</span> "CUSTOM-TRAINED" AI NICHE HUNTER</h3>
+                    <p class="text-xl font-bold text-kkyellow mb-4 relative z-10">Infinite Content & Ultimate Control</p>
+                    <div class="text-gray-300 space-y-3 mb-6 relative z-10">
+                        <p>Standard AI generates words with hyphens or phrases too long for grids. We custom-trained our engine specifically for Word Search formatting.</p>
+                        <p><strong class="text-white">The "Custom Prompt" Power:</strong> Tell the AI: <em class="text-kkyellow">"Only give me 5-letter words"</em> or <em class="text-kkyellow">"Translate medical terms to Spanish"</em>. The AI obeys instantly.</p>
+                    </div>
+                    <div class="bg-green-900/30 border-l-4 border-green-500 p-4 rounded text-green-400 font-bold relative z-10">
+                        => BENEFIT: Infinite, hyper-targeted content. Create specialized books no competitor can copy.
                     </div>
                 </div>
             </div>
 
             <!-- CTA #2 -->
-            <div class="bg-amber-100 border border-amber-300 p-8 rounded-xl text-center shadow-md">
-                <button onclick="document.getElementById('final-cta').scrollIntoView({behavior: 'smooth'})" class="w-full md:w-auto bg-amber-500 hover:bg-amber-600 text-slate-900 text-2xl font-extrabold py-5 px-10 rounded-lg shadow-xl uppercase tracking-wide transition transform hover:scale-105 mb-4">
-                    👉 UNLOCK THE "AI NICHE HUNTER" & LIVE STUDIO NOW!
+            <div class="mt-16 bg-gradient-to-r from-kkpurple-900 to-kkblack border border-kkpurple-600 p-10 rounded-2xl text-center shadow-[0_0_50px_rgba(124,58,237,0.3)]">
+                <button onclick="document.getElementById('valuestack').scrollIntoView({behavior: 'smooth'})" class="w-full md:w-auto glow-btn-yellow text-kkblack text-xl md:text-2xl font-black py-5 px-10 rounded-full uppercase tracking-wider mb-4">
+                    👉 UNLOCK THE "AI NICHE HUNTER" NOW!
                 </button>
-                <p class="text-lg text-amber-900 font-bold italic">Sub-text: Stop researching. Let the AI generate your 100-page empire today.</p>
+                <p class="text-lg text-gray-400 font-medium italic mt-2">Stop researching. Let the AI generate your 100-page empire today.</p>
             </div>
-
         </div>
     </section>
 
     <!-- PHẦN 6: THE "REALITY CHECK" -->
-    <section class="bg-slate-900 py-16 px-4 text-center text-white border-y-4 border-amber-500">
-        <div class="max-w-3xl mx-auto">
-            <h2 class="text-4xl font-extrabold mb-6">We Use What We Sell.</h2>
-            <p class="text-xl text-slate-300 mb-6 leading-relaxed">
+    <section class="bg-kkblack py-20 px-4 border-y border-gray-800 text-center relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-kkpurple-900/20 to-transparent"></div>
+        <div class="max-w-4xl mx-auto relative z-10">
+            <h2 class="text-4xl md:text-5xl font-black text-white mb-8 uppercase tracking-widest border-b-4 border-kkred inline-block pb-2">
+                We Use What We Sell.
+            </h2>
+            <p class="text-xl text-gray-400 mb-6 leading-relaxed font-serif">
                 When you buy from "Kreator Team", you aren't just getting software. You are getting the exact infrastructure we use to run our own 6-figure publishing business.
             </p>
-            <p class="text-xl text-amber-400 font-bold">
+            <p class="text-2xl text-kkyellow font-black bg-yellow-900/30 p-4 rounded-lg border border-kkyellow/20">
                 We constantly update [TOOL NAME] because WE need those updates to make more money. When we win, you win.
             </p>
         </div>
     </section>
 
     <!-- PHẦN 7: THE VALUE STACK & GUARANTEE -->
-    <section class="bg-slate-50 py-16 px-4">
+    <section id="valuestack" class="bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] bg-kkblack py-24 px-4">
         <div class="max-w-4xl mx-auto">
             
-            <h2 class="text-3xl md:text-5xl font-extrabold text-center text-slate-900 mb-12">
-                Let’s Review The Arsenal You Are Getting Today To Dominate Amazon KDP...
-            </h2>
-            <p class="text-xl text-center text-slate-700 mb-10 font-medium">Here is exactly what’s included when you secure your license to [TOOL NAME] right now:</p>
-
-            <!-- VALUE LIST -->
-            <div class="bg-white rounded-xl shadow-xl p-8 md:p-12 mb-12 border border-slate-200">
-                <ul class="space-y-6">
-                    <li class="flex items-start">
-                        <span class="text-2xl mr-4 mt-1">🟢</span>
-                        <div>
-                            <h4 class="text-xl font-bold text-slate-900">The [TOOL NAME] "Live Studio" Cloud App (Value: $297/Year)</h4>
-                            <p class="text-slate-600">Stop guessing with "Blind Box" generators. Edit, tweak, and perfect your 100-page books in real-time before downloading a 100% KDP-Ready PDF.</p>
-                        </div>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-2xl mr-4 mt-1">🟢</span>
-                        <div>
-                            <h4 class="text-xl font-bold text-slate-900">The "Shape-Shifting" Custom Masking Engine (Value: $197)</h4>
-                            <p class="text-slate-600">Ditch boring squares. Upload any silhouette and force your words to take the shape of dogs, hearts, trees, and more to command $15+ premium prices.</p>
-                        </div>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-2xl mr-4 mt-1">🟢</span>
-                        <div>
-                            <h4 class="text-xl font-bold text-slate-900">The 10,000+ DFY Keyword Vault & AI Niche Hunter (Value: $297)</h4>
-                            <p class="text-slate-600">Never do niche research again. Access 500+ proven topics instantly, or use our Custom-Trained AI to hunt down zero-competition micro-niches in seconds.</p>
-                        </div>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-2xl mr-4 mt-1">🟢</span>
-                        <div>
-                            <h4 class="text-xl font-bold text-slate-900">The "Magazine-Quality" Formatter & Decorator (Value: $147)</h4>
-                            <p class="text-slate-600">Automatically add dynamic headers, auto-calculating page numbers, and upload transparent background elements for the ultimate "Premium Activity Book" look.</p>
-                        </div>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-2xl mr-4 mt-1">🟢</span>
-                        <div>
-                            <h4 class="text-xl font-bold text-slate-900">The 1-Click Smart Solutions Builder (Value: $97)</h4>
-                            <p class="text-slate-600">Generate flawlessly formatted answer keys automatically to guarantee a frustration-free experience and 5-star reviews from buyers.</p>
-                        </div>
-                    </li>
-                    <li class="flex items-start bg-amber-50 p-4 border border-amber-200 rounded-lg">
-                        <span class="text-2xl mr-4 mt-1">🎁</span>
-                        <div>
-                            <h4 class="text-xl font-extrabold text-amber-900">FAST-ACTION BONUS: The "Quick-Start KDP Marketing Blueprint" (Value: $97)</h4>
-                            <p class="text-amber-800 font-medium">As real 6-figure sellers, we don't just give you the tool—we show you how to sell the output. Get our exact blueprint for ranking and scaling your puzzle empire.</p>
-                        </div>
-                    </li>
-                </ul>
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 uppercase tracking-tighter drop-shadow-lg">
+                    The Arsenal You Are Getting Today
+                </h2>
+                <p class="text-xl text-kkyellow font-bold tracking-wide">To Dominate Amazon KDP...</p>
             </div>
 
-            <!-- CTA #3 -->
-            <div id="final-cta" class="text-center mb-16">
-                <p class="text-3xl font-extrabold text-slate-900 mb-4 uppercase">TOTAL REAL-WORLD VALUE: <span class="line-through text-red-600">$1,132</span></p>
-                <p class="text-xl text-slate-700 mb-2 font-medium">But Today, You Aren't Paying $1,132.</p>
-                <p class="text-xl text-slate-700 mb-6 font-medium">You aren't even paying our standard $97 monthly fee.</p>
-                <p class="text-2xl font-bold text-slate-900 mb-8 bg-yellow-200 inline-block px-4 py-2">
-                    For a strictly limited time during this launch window, you get everything above for a TINY, ONE-TIME investment of just...
-                </p>
+            <!-- VALUE LIST (ACCORDION UI) -->
+            <div class="space-y-4 mb-16">
                 
-                <button onclick="alert('Redirecting to checkout...')" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-900 text-3xl md:text-4xl font-black py-8 px-6 rounded-2xl shadow-[0_20px_50px_rgba(245,158,11,0.5)] pulsing-btn shake-btn uppercase tracking-widest block mx-auto border-4 border-amber-300">
-                    👉 GET INSTANT ACCESS TO [TOOL NAME] FOR JUST $XX.XX!
+                <!-- V1 -->
+                <div class="glass-panel border border-gray-700 rounded-xl overflow-hidden group">
+                    <button onclick="toggleValue('v1')" class="w-full flex justify-between items-center p-6 bg-kkblack/50 hover:bg-kkpurple-900/50 transition">
+                        <div class="flex items-center text-left">
+                            <span class="text-3xl mr-4 drop-shadow-[0_0_10px_rgba(52,211,153,0.8)]">🟢</span>
+                            <h4 class="text-xl font-bold text-white uppercase tracking-wide">The "Live Studio" Cloud App</h4>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-kkyellow font-black text-xl mr-4 drop-shadow-md">Value: $297/Yr</span>
+                            <span id="icon-v1" class="text-gray-400 transition-transform duration-300">▼</span>
+                        </div>
+                    </button>
+                    <div id="v1" class="accordion-content px-6 bg-black/40 text-gray-300 border-t border-gray-800">
+                        Stop guessing with "Blind Box" generators. Edit, tweak, and perfect your 100-page books in real-time before downloading a 100% KDP-Ready PDF.
+                    </div>
+                </div>
+
+                <!-- V2 -->
+                <div class="glass-panel border border-gray-700 rounded-xl overflow-hidden group">
+                    <button onclick="toggleValue('v2')" class="w-full flex justify-between items-center p-6 bg-kkblack/50 hover:bg-kkpurple-900/50 transition">
+                        <div class="flex items-center text-left">
+                            <span class="text-3xl mr-4 drop-shadow-[0_0_10px_rgba(52,211,153,0.8)]">🟢</span>
+                            <h4 class="text-xl font-bold text-white uppercase tracking-wide">"Shape-Shifting" Masking Engine</h4>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-kkyellow font-black text-xl mr-4 drop-shadow-md">Value: $197</span>
+                            <span id="icon-v2" class="text-gray-400 transition-transform duration-300">▼</span>
+                        </div>
+                    </button>
+                    <div id="v2" class="accordion-content px-6 bg-black/40 text-gray-300 border-t border-gray-800">
+                        Ditch boring squares. Upload any silhouette and force your words to take the shape of dogs, hearts, trees, and more to command $15+ premium prices.
+                    </div>
+                </div>
+
+                <!-- V3 -->
+                <div class="glass-panel border border-gray-700 rounded-xl overflow-hidden group">
+                    <button onclick="toggleValue('v3')" class="w-full flex justify-between items-center p-6 bg-kkblack/50 hover:bg-kkpurple-900/50 transition">
+                        <div class="flex items-center text-left">
+                            <span class="text-3xl mr-4 drop-shadow-[0_0_10px_rgba(52,211,153,0.8)]">🟢</span>
+                            <h4 class="text-xl font-bold text-white uppercase tracking-wide">10K+ DFY Vault & AI Hunter</h4>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-kkyellow font-black text-xl mr-4 drop-shadow-md">Value: $297</span>
+                            <span id="icon-v3" class="text-gray-400 transition-transform duration-300">▼</span>
+                        </div>
+                    </button>
+                    <div id="v3" class="accordion-content px-6 bg-black/40 text-gray-300 border-t border-gray-800">
+                        Never do niche research again. Access 500+ proven topics instantly, or use our Custom-Trained AI to hunt down zero-competition micro-niches in seconds.
+                    </div>
+                </div>
+
+                <!-- V4 -->
+                <div class="glass-panel border border-gray-700 rounded-xl overflow-hidden group">
+                    <button onclick="toggleValue('v4')" class="w-full flex justify-between items-center p-6 bg-kkblack/50 hover:bg-kkpurple-900/50 transition">
+                        <div class="flex items-center text-left">
+                            <span class="text-3xl mr-4 drop-shadow-[0_0_10px_rgba(52,211,153,0.8)]">🟢</span>
+                            <h4 class="text-xl font-bold text-white uppercase tracking-wide">"Magazine-Quality" Formatter</h4>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-kkyellow font-black text-xl mr-4 drop-shadow-md">Value: $147</span>
+                            <span id="icon-v4" class="text-gray-400 transition-transform duration-300">▼</span>
+                        </div>
+                    </button>
+                    <div id="v4" class="accordion-content px-6 bg-black/40 text-gray-300 border-t border-gray-800">
+                        Automatically add dynamic headers, auto-calculating page numbers, and upload transparent background elements for the ultimate "Premium Activity Book" look.
+                    </div>
+                </div>
+
+                <!-- V5 -->
+                <div class="glass-panel border border-gray-700 rounded-xl overflow-hidden group">
+                    <button onclick="toggleValue('v5')" class="w-full flex justify-between items-center p-6 bg-kkblack/50 hover:bg-kkpurple-900/50 transition">
+                        <div class="flex items-center text-left">
+                            <span class="text-3xl mr-4 drop-shadow-[0_0_10px_rgba(52,211,153,0.8)]">🟢</span>
+                            <h4 class="text-xl font-bold text-white uppercase tracking-wide">1-Click Smart Solutions Builder</h4>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-kkyellow font-black text-xl mr-4 drop-shadow-md">Value: $97</span>
+                            <span id="icon-v5" class="text-gray-400 transition-transform duration-300">▼</span>
+                        </div>
+                    </button>
+                    <div id="v5" class="accordion-content px-6 bg-black/40 text-gray-300 border-t border-gray-800">
+                        Generate flawlessly formatted answer keys automatically to guarantee a frustration-free experience and 5-star reviews from buyers.
+                    </div>
+                </div>
+
+                <!-- V6 BONUS -->
+                <div class="bg-gradient-to-r from-kkred to-kkpurple-900 border border-kkred rounded-xl overflow-hidden group shadow-[0_0_30px_rgba(239,68,68,0.3)]">
+                    <button onclick="toggleValue('v6')" class="w-full flex justify-between items-center p-6 hover:bg-black/20 transition">
+                        <div class="flex items-center text-left">
+                            <span class="text-3xl mr-4 drop-shadow-lg">🎁</span>
+                            <h4 class="text-xl font-black text-white uppercase tracking-wide">FAST-ACTION BONUS: Marketing Blueprint</h4>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-white font-black text-xl mr-4 bg-kkblack/50 px-3 py-1 rounded">Value: $97</span>
+                            <span id="icon-v6" class="text-white transition-transform duration-300">▼</span>
+                        </div>
+                    </button>
+                    <div id="v6" class="accordion-content px-6 bg-black/40 text-white border-t border-kkred/50">
+                        As real 6-figure sellers, we don't just give you the tool—we show you how to sell the output. Get our exact blueprint for ranking and scaling your puzzle empire.
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- EPIC FINAL CTA -->
+            <div class="text-center mb-20 relative">
+                <div class="absolute inset-0 bg-kkyellow blur-[120px] opacity-10 rounded-full"></div>
+                
+                <p class="text-3xl font-black text-gray-400 mb-2 uppercase tracking-widest">TOTAL REAL-WORLD VALUE: <span class="line-through decoration-kkred decoration-4 text-gray-500">$1,132</span></p>
+                <p class="text-xl text-gray-300 mb-2 font-medium">But Today, You Aren't Paying $1,132.</p>
+                <p class="text-xl text-gray-300 mb-6 font-medium">You aren't even paying our standard $97 monthly fee.</p>
+                
+                <div class="inline-block bg-kkred text-white text-sm font-bold px-4 py-1 rounded-full uppercase tracking-widest mb-6 animate-bounce">Strictly Limited Launch Offer</div>
+                
+                <button onclick="alert('Redirecting to checkout...')" class="w-full max-w-2xl mx-auto bg-gradient-to-r from-kkyellow to-yellow-500 hover:from-white hover:to-kkyellow text-kkblack text-3xl md:text-5xl font-black py-8 px-6 rounded-full shadow-[0_0_50px_rgba(251,191,36,0.6)] pulse-epic uppercase tracking-tighter block border-4 border-yellow-300 transition-all duration-300 transform hover:scale-105">
+                    👉 GET INSTANT ACCESS <br/><span class="text-2xl md:text-3xl opacity-80 mt-2 block">FOR JUST $XX.XX!</span>
                 </button>
-                <p class="mt-4 text-xl font-bold text-slate-500 uppercase tracking-widest">No Monthly Fees. Pay Once, Use Forever</p>
+                
+                <p class="mt-8 text-2xl font-black text-kkyellow uppercase tracking-widest bg-yellow-900/40 inline-block px-6 py-2 rounded-lg border border-kkyellow/30">
+                    No Monthly Fees. Pay Once, Use Forever.
+                </p>
             </div>
 
             <!-- GUARANTEE -->
-            <div class="bg-slate-900 text-white p-10 rounded-2xl shadow-2xl border-4 border-indigo-500 max-w-3xl mx-auto text-center relative overflow-hidden">
-                <div class="absolute -top-10 -right-10 text-9xl opacity-10">🛡️</div>
-                <div class="text-6xl mb-6">🛡️</div>
-                <h3 class="text-3xl font-black text-amber-400 mb-6 uppercase">
-                    THE 3-DAY "PUBLISH OR PERISH" IRONCLAD GUARANTEE
+            <div class="glass-panel p-10 md:p-14 rounded-3xl shadow-[0_0_60px_rgba(124,58,237,0.4)] border-2 border-kkpurple-600 text-center relative overflow-hidden">
+                <div class="absolute -top-10 -right-10 text-9xl opacity-10 filter grayscale">🛡️</div>
+                <div class="text-7xl mb-6 drop-shadow-[0_0_20px_rgba(255,255,255,0.5)]">🛡️</div>
+                <h3 class="text-3xl md:text-4xl font-black text-white mb-4 uppercase tracking-wider">
+                    THE 30-DAY "PUBLISH OR PERISH" <br/><span class="text-kkyellow">IRONCLAD GUARANTEE</span>
                 </h3>
-                <p class="text-2xl font-bold mb-6 italic text-slate-300">"We take all the risk. You take all the profits."</p>
+                <p class="text-2xl font-bold mb-8 italic text-gray-300 font-serif">"We take all the risk. You take all the profits."</p>
                 
-                <p class="mb-4 text-lg">Try [TOOL NAME] completely risk-free for 30 full days. Log into the Live Studio. Use our AI to find a crazy micro-niche. Export a "Shape-Shifting" puzzle book, and upload it to Amazon KDP.</p>
-                
-                <p class="mb-4 text-lg font-bold text-indigo-300">If this isn't the fastest, easiest, and most visually stunning puzzle generator you have ever used...</p>
-                
-                <p class="mb-4 text-lg font-bold text-indigo-300">If it doesn't save you hours of formatting headaches...</p>
-                
-                <p class="text-lg">Simply send an email to our support team, and we will refund every single penny of your investment immediately. No questions asked, no hard feelings. You literally have nothing to lose, and a highly profitable KDP empire to gain.</p>
+                <div class="text-lg text-gray-300 space-y-4 max-w-3xl mx-auto leading-relaxed">
+                    <p>Try [TOOL NAME] completely risk-free for 30 full days. Log into the Live Studio. Use our AI to find a crazy micro-niche. Export a "Shape-Shifting" puzzle book, and upload it to Amazon KDP.</p>
+                    <p class="font-bold text-white bg-kkpurple-900/50 p-4 rounded border border-kkpurple-600">If this isn't the fastest, easiest, and most visually stunning puzzle generator you have ever used... If it doesn't save you hours of formatting headaches...</p>
+                    <p>Simply send an email to our support team, and we will refund every single penny of your investment immediately. No questions asked, no hard feelings. You literally have nothing to lose, and a highly profitable KDP empire to gain.</p>
+                </div>
             </div>
 
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-slate-950 text-slate-500 py-8 text-center text-sm">
-        <p>&copy; 2026 KreatorKits. All rights reserved.</p>
+    <footer class="bg-black text-gray-600 py-10 text-center text-sm border-t border-gray-900">
+        <p class="font-bold tracking-widest uppercase">&copy; 2026 KreatorKits. All rights reserved.</p>
     </footer>
 
+    <!-- Accordion Script -->
+    <script>
+        function toggleValue(id) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            
+            if (content.classList.contains('open')) {
+                content.classList.remove('open');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                content.classList.add('open');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+    </script>
 </body>
 </html>
