@@ -135,15 +135,17 @@ const [openAccordions, setOpenAccordions] = useState({});
                   <span className="text-[#fbbf24] font-bold uppercase">The answer is YES.</span> While the masses are fighting over pennies selling blank notebooks, a small group of smart "Solo-Publishers" are quietly dominating a massive, evergreen market.
               </p>
 
-              {/* MEDIA NOTE #1.1: VIDEO */}
-              <div className="glass-panel rounded-2xl aspect-video w-full max-w-4xl mx-auto mb-8 relative flex flex-col items-center justify-center shadow-[0_0_40px_rgba(124,58,237,0.3)] overflow-hidden cursor-pointer group border-2 border-[#7c3aed]/50">
-                  <div className="absolute inset-0 bg-[#2e1065] opacity-40 group-hover:opacity-10 transition duration-500"></div>
-                  <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/black-scales.png')] opacity-20 group-hover:scale-110 transition-transform duration-700"></div>
-                  <div className="z-10 bg-[#fbbf24] w-24 h-24 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(251,191,36,0.6)] group-hover:scale-125 group-hover:shadow-[0_0_50px_rgba(251,191,36,1)] transition-all duration-300">
-                      <span className="text-[#09090b] text-5xl ml-2">▶</span>
-                  </div>
-                  <p className="z-10 text-white mt-6 font-bold tracking-widest uppercase text-sm bg-[#09090b]/70 px-6 py-2 rounded-full backdrop-blur-sm group-hover:text-[#fbbf24] transition">Watch Demo: ZERO Skills to $10k/Month</p>
-                  <div className="absolute top-4 left-4 bg-[#ef4444] text-white text-xs font-bold px-3 py-1 rounded shadow-lg">MEDIA NOTE 1.1: VIDEO DEMO</div>
+              {/* MEDIA NOTE #1.1: VIDEO YOUTUBE EMBED */}
+              <div className="glass-panel rounded-2xl aspect-video w-full max-w-4xl mx-auto mb-8 relative flex flex-col items-center justify-center shadow-[0_0_40px_rgba(124,58,237,0.3)] overflow-hidden border-2 border-[#7c3aed]/50">
+                  <iframe 
+                      className="absolute inset-0 w-full h-full z-10"
+                      src="https://www.youtube.com/embed/28Lj4qt3lCc?rel=0" 
+                      title="YouTube video player" 
+                      frameBorder="0" 
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                      allowFullScreen>
+                  </iframe>
+                  <div className="absolute top-4 left-4 bg-[#ef4444] text-white text-xs font-bold px-3 py-1 rounded shadow-lg pointer-events-none z-20">MEDIA NOTE 1.1: VIDEO DEMO</div>
               </div>
 
               {/* SUB-HEADLINE 1.2 */}
@@ -183,18 +185,18 @@ const [openAccordions, setOpenAccordions] = useState({});
 
               {/* MEDIA NOTE #2.1: VIDEO PROOF */}
               <div className="glass-panel rounded-2xl p-6 relative mb-12 max-w-3xl mx-auto shadow-[0_0_50px_rgba(0,0,0,0.8)] border border-gray-800 group cursor-crosshair text-center">
-                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[#7c3aed] text-white text-xs font-bold px-4 py-1 rounded-full z-10 tracking-widest uppercase group-hover:bg-[#fbbf24] group-hover:text-[#09090b] transition">MEDIA NOTE 2.1: 30-DAY PROFIT SCREENSHOT</div>
+                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[#7c3aed] text-white text-xs font-bold px-4 py-1 rounded-full z-10 tracking-widest uppercase group-hover:bg-[#fbbf24] group-hover:text-[#09090b] transition">MEDIA NOTE 2.1: VIDEO</div>
                   <div className="bg-black/80 h-72 rounded-xl flex flex-col items-center justify-center border border-gray-700 relative overflow-hidden group-hover:border-green-500/50 transition duration-500">
                       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 group-hover:scale-110 transition duration-700"></div>
                       <span className="text-green-500 text-7xl md:text-8xl font-black mb-2 drop-shadow-[0_0_20px_rgba(34,197,94,0.4)] relative z-10 group-hover:drop-shadow-[0_0_40px_rgba(34,197,94,0.8)] transition duration-300">+$19,115<span className="text-4xl text-green-600">.62</span></span>
                       <span className="text-gray-400 font-mono text-sm tracking-widest uppercase bg-gray-900 px-3 py-1 rounded relative z-10 group-hover:text-green-400 transition">Last 30 Days Amazon KDP Royalties</span>
                   </div>
-                  <p className="text-xl text-gray-400 mt-6 italic">"This is what happens when you stop using 'Toy Tools' and start using a <span className="text-[#fbbf24] font-bold">'Pro Engine'</span>."</p>
+                  <p className="text-xl text-gray-400 mt-6 italic">This is what happens when you stop using 'Toy Tools' and start using a <span className="text-[#fbbf24] font-bold">'Pro Engine'</span>.</p>
               </div>
 
               {/* CONTENT 2.1 */}
               <div className="text-lg text-gray-300 text-center max-w-3xl mx-auto mb-16 space-y-4">
-                  <p>Most software creators in this industry are just coders looking for a quick buck. They have never published a single book. <strong className="text-white">We are different.</strong></p>
+                  <p>Most software creators in this industry are just coders looking for a quick buck. They have never published a single book. We are different.</p>
                   <p><strong className="text-white">We are real KDP Sellers.</strong> The screenshot above is our actual dashboard. And a massive chunk of those royalties comes from one "boring", yet highly profitable niche: Word Search Puzzles.</p>
               </div>
 
@@ -202,31 +204,31 @@ const [openAccordions, setOpenAccordions] = useState({});
               <div className="border-t border-gray-800 pt-16">
                   <h3 className="text-3xl font-black text-white mb-6 text-center uppercase tracking-wide">Why Word Search? <span className="text-[#fbbf24]">Because The Data Doesn't Lie.</span></h3>
                   <p className="text-lg text-gray-300 text-center max-w-3xl mx-auto mb-10">
-                      You might be wondering: "How can simple word grids make $10,000+ a month?" <br/>We didn't guess. We looked at the data. Before we built this engine, we analyzed the market using advanced tools like Helium 10 Xray, and what we found was a literal goldmine.
+                      You might be wondering: "How can simple word grids make $10,000+ a month?" <br/><br/>We didn't guess. We looked at the data. Before we built this engine, we analyzed the market using advanced tools like Helium 10 Xray, and what we found was a literal goldmine.
                   </p>
 
                   {/* MEDIA NOTE 2.2: HELIUM 10 XRAY PROOF */}
                   <div className="glass-panel p-4 rounded-xl border border-gray-700 shadow-2xl mb-12 relative overflow-hidden group">
-                      <div className="absolute top-0 right-0 bg-[#ef4444] text-white text-[10px] font-bold px-3 py-1 rounded-bl z-10">MEDIA NOTE 2.2: HELIUM 10 XRAY GIF</div>
+                      <div className="absolute top-0 right-0 bg-[#ef4444] text-white text-[10px] font-bold px-3 py-1 rounded-bl z-10">MEDIA NOTE 2.2: THE HELIUM 10 XRAY PROOF</div>
                       <div className="bg-gray-900 rounded border border-gray-800 p-4">
                           <div className="flex items-center text-xs text-gray-500 mb-4 border-b border-gray-800 pb-2">
-                              <span className="w-1/2">Product (Word Search Books for Adults)</span>
+                              <span className="w-1/2">Product (Word Search Books for Adults & Seniors)</span>
                               <span className="w-1/4 text-right">Search Vol</span>
                               <span className="w-1/4 text-right">Revenue/Mo</span>
                           </div>
-                          <div className="flex items-center text-sm font-mono bg-black/50 p-2 rounded mb-1 group-hover:bg-indigo-900/30 transition">
+                          <div className="flex items-center text-sm font-mono bg-black/50 p-2 rounded mb-1 group-hover:bg-indigo-900/30 transition border-l-2 border-transparent hover:border-[#fbbf24]">
                               <span className="w-1/2 text-gray-300 truncate">Word Search Large Print Edition...</span>
-                              <span className="w-1/4 text-right text-indigo-400">145,000</span>
+                              <span className="w-1/4 text-right text-indigo-400 font-bold bg-indigo-900/40 px-2 rounded">145,000</span>
                               <span className="w-1/4 text-right text-green-400 font-bold bg-green-900/40 px-2 rounded group-hover:animate-pulse">$15,430</span>
                           </div>
-                          <div className="flex items-center text-sm font-mono bg-black/50 p-2 rounded mb-1 group-hover:bg-indigo-900/30 transition">
+                          <div className="flex items-center text-sm font-mono bg-black/50 p-2 rounded mb-1 group-hover:bg-indigo-900/30 transition border-l-2 border-transparent hover:border-[#fbbf24]">
                               <span className="w-1/2 text-gray-300 truncate">Relaxing Word Search Puzzles...</span>
-                              <span className="w-1/4 text-right text-indigo-400">98,200</span>
+                              <span className="w-1/4 text-right text-indigo-400 font-bold bg-indigo-900/40 px-2 rounded">98,200</span>
                               <span className="w-1/4 text-right text-green-400 font-bold bg-green-900/40 px-2 rounded group-hover:animate-pulse">$12,100</span>
                           </div>
-                          <div className="flex items-center text-sm font-mono bg-black/50 p-2 rounded group-hover:bg-indigo-900/30 transition">
+                          <div className="flex items-center text-sm font-mono bg-black/50 p-2 rounded group-hover:bg-indigo-900/30 transition border-l-2 border-transparent hover:border-[#fbbf24]">
                               <span className="w-1/2 text-gray-300 truncate">Seniors Memory Games Vol 1...</span>
-                              <span className="w-1/4 text-right text-indigo-400">112,000</span>
+                              <span className="w-1/4 text-right text-indigo-400 font-bold bg-indigo-900/40 px-2 rounded">112,000</span>
                               <span className="w-1/4 text-right text-green-400 font-bold bg-green-900/40 px-2 rounded group-hover:animate-pulse">$9,850</span>
                           </div>
                       </div>
@@ -239,20 +241,20 @@ const [openAccordions, setOpenAccordions] = useState({});
                           <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800 hover:border-[#fbbf24] transition">
                               <span className="text-3xl mb-4 block">📊</span>
                               <h4 className="font-bold text-white mb-2">Insane Search Volume & Buyer Intent</h4>
-                              <p className="text-sm">Look at the Xray scan above. Millions of buyers are actively searching for these books daily.</p>
+                              <p className="text-sm">Look at the Xray scan above. The top 20 products are pulling in massive revenue every single month. Millions of buyers are actively searching for these books daily.</p>
                           </div>
                           <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800 hover:border-[#fbbf24] transition">
                               <span className="text-3xl mb-4 block">🎯</span>
-                              <h4 className="font-bold text-white mb-2">The "Hungry Crowd"</h4>
-                              <p className="text-sm">Adults and seniors buy puzzle books by the dozens to relax and unplug. They consume them fast and always come back.</p>
+                              <h4 className="font-bold text-white mb-2">The "Hungry Crowd" (Adults & Seniors)</h4>
+                              <p className="text-sm">This is not a passing TikTok trend. Adults and seniors buy puzzle books by the dozens to relax, unplug from screens, and keep their minds sharp. They consume them fast, and they always come back for more.</p>
                           </div>
                           <div className="bg-gray-900/50 p-6 rounded-xl border border-gray-800 hover:border-[#fbbf24] transition">
                               <span className="text-3xl mb-4 block">🚀</span>
-                              <h4 className="font-bold text-white mb-2">Zero "Writing" Needed</h4>
-                              <p className="text-sm">You don't need to be a novelist. You are selling a format, not a story. Lowest barrier to entry with highest ROI.</p>
+                              <h4 className="font-bold text-white mb-2">High ROI, Zero "Writing" Needed</h4>
+                              <p className="text-sm">You don't need to be a novelist or speak perfect English. You are selling a format, not a story. It’s the lowest barrier to entry with the highest possible passive return.</p>
                           </div>
                       </div>
-                      <p className="text-center font-bold text-[#fbbf24] mt-8 text-xl">The demand is practically infinite. The money is real.</p>
+                      <p className="text-center font-bold text-[#fbbf24] mt-8 text-xl">The demand is practically infinite. The money is real.<br/><span className="text-gray-400 text-lg font-medium block mt-2">So... if the market is this good, why are 95% of beginners still failing?</span></p>
                   </div>
               </div>
 
@@ -268,15 +270,15 @@ const [openAccordions, setOpenAccordions] = useState({});
                       <p>The Amazon algorithm instantly buries your book forever. That massive $19,000 pie? You get absolutely nothing. Because buyers don't want cheap PDF slop. They want high-quality experiences.</p>
                   </div>
 
-                  <h4 className="text-2xl font-bold text-[#fbbf24] mb-8">Look At What Actually Sells (The Cold, Hard Proof)</h4>
+                  <h4 className="text-2xl font-bold text-[#fbbf24] mb-8">Look At What Actually Sells (The Cold, Hard Proof)<br/><span className="text-lg text-gray-400 font-medium block mt-2">While other software creators hide behind fake names, let's look at real market winners.</span></h4>
 
                   {/* MEDIA NOTE #3: WINNING BOOKS & REVIEWS */}
                   <div className="glass-panel p-6 md:p-8 rounded-2xl border border-gray-700 shadow-2xl relative mb-12">
-                      <div className="absolute top-0 right-0 bg-[#7c3aed] text-white text-[10px] font-bold px-3 py-1 rounded-bl z-10">MEDIA NOTE 3: WINNING BOOKS MOCK</div>
+                      <div className="absolute top-0 right-0 bg-[#7c3aed] text-white text-[10px] font-bold px-3 py-1 rounded-bl z-10">MEDIA NOTE 3: THE WINNING BOOKS & REVIEWS</div>
                       
                       <div className="flex flex-col md:flex-row gap-8 justify-center items-center">
-                          <div className="w-full md:w-1/2 flex flex-col items-center">
-                              <div className="w-40 h-56 bg-gradient-to-br from-indigo-800 to-blue-900 rounded-lg shadow-2xl border-l-4 border-indigo-400 flex items-center justify-center text-center p-4 relative transform -rotate-2 hover:rotate-0 transition duration-300">
+                          <a href="https://www.amazon.com/4000-Search-Adults-Seniors-Puzzles/dp/B0FDQSKY8R/" target="_blank" rel="noopener noreferrer" className="w-full md:w-1/2 flex flex-col items-center group cursor-pointer block">
+                              <div className="w-40 h-56 bg-gradient-to-br from-indigo-800 to-blue-900 rounded-lg shadow-2xl border-l-4 border-indigo-400 flex items-center justify-center text-center p-4 relative transform -rotate-2 group-hover:rotate-0 transition duration-300 group-hover:border-[#fbbf24]">
                                   <span className="text-white font-black text-xl leading-tight">4000 Word Search <br/><span className="text-sm font-normal">For Adults & Seniors</span></span>
                                   <div className="absolute bottom-2 right-2 bg-[#fbbf24] text-[#09090b] text-xs font-bold px-2 rounded shadow">$14.99</div>
                               </div>
@@ -284,9 +286,9 @@ const [openAccordions, setOpenAccordions] = useState({});
                                   <div className="text-[#fbbf24] text-xs mb-1">⭐⭐⭐⭐⭐ <em>Verified Purchase</em></div>
                                   <p className="text-gray-300 italic">"Love the large print! The formatting is clear and easy on the eyes. Will buy again."</p>
                               </div>
-                          </div>
-                          <div className="w-full md:w-1/2 flex flex-col items-center">
-                              <div className="w-40 h-56 bg-gradient-to-br from-emerald-800 to-teal-900 rounded-lg shadow-2xl border-l-4 border-emerald-400 flex items-center justify-center text-center p-4 relative transform rotate-2 hover:rotate-0 transition duration-300">
+                          </a>
+                          <a href="https://www.amazon.com/Search-Books-Adults-Large-Puzzle/dp/B0DY5FFR9G/" target="_blank" rel="noopener noreferrer" className="w-full md:w-1/2 flex flex-col items-center group cursor-pointer block">
+                              <div className="w-40 h-56 bg-gradient-to-br from-emerald-800 to-teal-900 rounded-lg shadow-2xl border-l-4 border-emerald-400 flex items-center justify-center text-center p-4 relative transform rotate-2 group-hover:rotate-0 transition duration-300 group-hover:border-[#fbbf24]">
                                   <span className="text-white font-black text-xl leading-tight">Word Search Books <br/><span className="text-sm font-normal">Large Print Puzzle</span></span>
                                   <div className="absolute bottom-2 right-2 bg-[#fbbf24] text-[#09090b] text-xs font-bold px-2 rounded shadow">$12.99</div>
                               </div>
@@ -294,9 +296,9 @@ const [openAccordions, setOpenAccordions] = useState({});
                                   <div className="text-[#fbbf24] text-xs mb-1">⭐⭐⭐⭐⭐ <em>Verified Purchase</em></div>
                                   <p className="text-gray-300 italic">"Good layout, very neat solutions at the back. Not a cheap knockoff."</p>
                               </div>
-                          </div>
+                          </a>
                       </div>
-                      <p className="text-center font-bold text-[#fbbf24] mt-8 uppercase tracking-wider">Real Books. Real 4.8+ Star Reviews. Real Profits.</p>
+                      <p className="text-center font-bold text-[#fbbf24] mt-8 uppercase tracking-wider">Real Books. Real 4.5+ Star Reviews. Real Profits.</p>
                   </div>
 
                   {/* CONTENT 2.3.2 */}
@@ -317,10 +319,10 @@ const [openAccordions, setOpenAccordions] = useState({});
 
       {/* PHẦN 3: THE LEAD (THE LETTER) */}
       <section id="letter" className="bg-gradient-to-b from-[#09090b] to-[#2e1065] py-24 px-4 border-t border-gray-900">
-          <div className="max-w-4x1 mx-auto">
+          <div className="max-w-4xl mx-auto">
               
               <div className="text-center mb-12">
-                  <h2 className="text-3x1 md:text-5xl font-black text-white uppercase tracking-tighter">A Message From The Founders</h2>
+                  <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter">A MESSAGE FROM THE FOUNDERS</h2>
               </div>
 
               {/* CONTENT 3.1 (THE LETTER UI) */}
@@ -328,7 +330,7 @@ const [openAccordions, setOpenAccordions] = useState({});
                   <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-[#ef4444] via-[#fbbf24] to-[#7c3aed]"></div>
                   
                   <div className="font-sans text-xs font-bold text-gray-400 tracking-widest uppercase border-b border-gray-300 pb-4 mb-8">
-                      <p className="mb-1"><span className="text-[#ef4444]">FROM THE DESK OF:</span> Kreator Team (Founders of KreatorKits) – 6-Figure KDP Sellers.</p>
+                      <p className="mb-1"><span className="text-[#ef4444]">FROM THE DESK OF:</span> Kreator Team (Founders of KreatorKits) – 7-Figure KDP Sellers.</p>
                       <p><span className="text-[#ef4444]">RE:</span> Why your Puzzle Books are failing (It’s not your fault).</p>
                   </div>
 
@@ -338,35 +340,33 @@ const [openAccordions, setOpenAccordions] = useState({});
                       <p>We spent 3 years doing it the hard way. We bought the "best-selling" puzzle generators on the market, hoping to build our passive income empire. But what we got was a nightmare. We fought with "Garbage AI" that generated terrible, out-of-topic words. We suffered through the formatting hell of generic tools.</p>
                       <p className="font-bold text-[#ef4444] text-xl bg-red-50 p-2 inline-block">It was a "Blind Box".</p>
                       <ul className="list-none pl-4 space-y-3 font-medium">
-                          <li className="flex items-start"><span className="text-[#ef4444] mr-2">❌</span> You spot a garbage word the AI generated in your PDF? You can't just edit it. You have to guess a new setting, regenerate the whole file, and pray it looks okay.</li>
-                          <li className="flex items-start"><span className="text-[#ef4444] mr-2">❌</span> You want to change a font, adjust a margin, or add a cute image to make it look premium? The software locks you out. You are stuck with boring, ugly squares.</li>
-                          <li className="flex items-start"><span className="text-[#ef4444] mr-2">❌</span> You want to publish a massive 150-page book? Have fun spending days manually writing the Intro, setting up the pages, and calculating the Table of Contents by hand.</li>
+                          <li className="flex items-start"><span className="text-[#ef4444] mr-2">-</span> You spot a garbage word the AI generated in your PDF? You can't just edit it. You have to guess a new setting, regenerate the whole file, and pray it looks okay.</li>
+                          <li className="flex items-start"><span className="text-[#ef4444] mr-2">-</span> You want to change a font, adjust a margin, or add a cute image to make it look premium? The software locks you out. You are stuck with boring, ugly squares.</li>
+                          <li className="flex items-start"><span className="text-[#ef4444] mr-2">-</span> You want to publish a massive 150-page book? Have fun spending days manually writing the Intro, setting up the pages, and calculating the Table of Contents by hand.</li>
                       </ul>
 
                       {/* MEDIA NOTE #3: ẢNH SO SÁNH */}
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-10 font-sans">
-                          <div className="bg-red-50 p-3 rounded-lg border-2 border-red-200 relative group overflow-hidden">
-                              <div className="absolute top-0 left-0 bg-[#09090b] text-white text-[10px] font-bold px-2 py-1 rounded-br z-10">MEDIA NOTE 3: LEFT</div>
-                              <div className="h-48 bg-white border border-gray-300 flex flex-col items-center justify-center p-4 group-hover:bg-red-100 transition duration-300">
+                          <div className="bg-gray-100 p-3 rounded-lg border-2 border-gray-300 relative group overflow-hidden">
+                              <div className="absolute top-0 left-0 bg-[#09090b] text-white text-[10px] font-bold px-2 py-1 rounded-br z-10">MEDIA NOTE 3: TRÁI</div>
+                              <div className="h-48 bg-white border border-gray-300 flex flex-col items-center justify-center p-4 group-hover:bg-gray-200 transition duration-300 grayscale">
                                   <span className="text-4xl mb-2 text-red-500 group-hover:scale-125 transition">📄❌</span>
                                   <div className="w-full bg-gray-200 h-24 flex flex-col items-center justify-center text-gray-500 font-mono text-xs text-center p-2 opacity-60">
                                       <div className="grid grid-cols-4 gap-1 mb-2"><span>A</span><span>E</span><span>I</span><span className="text-red-500 line-through">0</span></div>
-                                      <span className="text-[10px] bg-red-200 px-1 rounded text-red-700">Non-Editable Layer</span>
-                                      <span className="text-red-500 font-bold mt-2 border-t border-red-200 pt-1 w-full">CANNOT EDIT</span>
+                                      <span className="text-[10px] bg-red-200 px-1 rounded text-red-700">Error / Corrupted</span>
                                   </div>
                               </div>
-                              <p className="text-center font-bold text-red-700 mt-3 text-sm">The Competitor's PDF Trap (Uneditable)</p>
+                              <p className="text-center font-bold text-gray-700 mt-3 text-sm">The Competitor's PDF Trap (Uneditable)</p>
                           </div>
                           <div className="bg-green-50 p-3 rounded-lg border-2 border-green-400 relative transform md:scale-105 shadow-xl group cursor-pointer">
-                              <div className="absolute top-0 right-0 bg-[#09090b] text-white text-[10px] font-bold px-2 py-1 rounded-bl z-10">MEDIA NOTE 3: RIGHT</div>
+                              <div className="absolute top-0 right-0 bg-[#09090b] text-white text-[10px] font-bold px-2 py-1 rounded-bl z-10">MEDIA NOTE 3: PHẢI</div>
                               <div className="h-48 bg-white border border-gray-300 flex flex-col items-center justify-center p-4 relative group-hover:border-indigo-500 transition duration-300">
                                   <span className="text-4xl mb-2 relative z-10 group-hover:animate-bounce">💻✨</span>
                                   <div className="w-full bg-indigo-50 border-2 border-dashed border-indigo-400 h-24 flex flex-col items-center justify-center relative z-10 group-hover:bg-indigo-100 transition duration-300 p-2">
                                       <div className="flex gap-1 mb-1"><div className="w-12 h-3 bg-indigo-300 rounded-sm"></div><div className="w-4 h-4 bg-[#fbbf24] rounded-full"></div></div>
                                       <div className="text-indigo-600 font-bold text-sm mt-2 flex items-center">
-                                          <span className="animate-pulse mr-1">|</span> Editing Live...
+                                          <span className="animate-pulse mr-1">|</span> Decorating Live...
                                       </div>
-                                      <span className="absolute top-2 right-2 text-[10px] bg-indigo-200 text-indigo-800 px-1 rounded">Canvas Mode</span>
                                   </div>
                               </div>
                               <p className="text-center font-bold text-green-700 mt-3 text-sm group-hover:text-indigo-700 transition">Our LIVE CANVAS (100% Editable)</p>
@@ -380,8 +380,8 @@ const [openAccordions, setOpenAccordions] = useState({});
                       
                       <div className="text-center mt-12 mb-6 font-sans">
                           <p className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-2">Introducing</p>
-                          <h2 className="text-3xl font-black text-[#2e1065] mb-2">The Ultimate "Word Search Puzzle Generator"</h2>
-                          <p className="text-xl font-bold text-[#7c3aed]">The World’s First Word Search Engine Built By Sellers, FOR Sellers.</p>
+                          <h2 className="text-3xl font-black text-[#2e1065] mb-2">[TOOL NAME]</h2>
+                          <p className="text-xl font-bold text-[#7c3aed]">The Ultimate "Word Search Puzzle Generator" by Real Sellers</p>
                       </div>
                   </div>
 
@@ -406,14 +406,11 @@ const [openAccordions, setOpenAccordions] = useState({});
           <div className="max-w-6xl mx-auto text-center">
               <p className="text-[#fbbf24] font-bold tracking-widest uppercase mb-2">THE "1-CLICK" PUBLISHING ENGINE</p>
               <h2 className="text-3xl md:text-5xl font-black text-white mb-6 uppercase tracking-wide leading-tight">
-                  How to create a high-ticket, best-selling puzzle book in 4 simple steps
+                  Stop Guessing. Start Designing. <br/><span className="text-2xl md:text-3xl text-gray-400 mt-2 block">Create A 100-Page 'Publisher-Quality' Book In 4 Clicks Inside Our 'Live Studio' Dashboard.</span>
               </h2>
-              <p className="text-xl text-gray-400 mb-16 font-medium max-w-4xl mx-auto">
-                  Create A 100-Page 'Publisher-Quality' Book In <span className="text-white font-bold">4 Clicks</span> Inside Our 'Live Studio' Dashboard (Without hiring a designer).
-              </p>
 
               {/* MEDIA NOTE #4: 4 MEDIA NGANG */}
-              <div className="relative pt-6">
+              <div className="relative pt-6 mt-16">
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-[#7c3aed] text-white text-[10px] font-bold px-3 py-1 rounded-full z-10 tracking-widest uppercase shadow-lg">MEDIA NOTE 4: HORIZONTAL UI MOCKUPS</div>
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
@@ -422,13 +419,13 @@ const [openAccordions, setOpenAccordions] = useState({});
                           <div className="w-14 h-14 bg-[#2e1065] border border-[#7c3aed] text-[#fbbf24] rounded-full flex items-center justify-center font-black text-2xl mb-6 shadow-[0_0_15px_rgba(124,58,237,0.5)] group-hover:bg-[#fbbf24] group-hover:text-[#09090b] transition">1</div>
                           <div className="h-28 bg-black/50 rounded-lg border border-gray-700 mb-5 p-3 overflow-hidden text-xs text-green-400 font-mono relative group-hover:border-green-500/50 transition">
                               <span className="block bg-gray-800 w-3/4 h-2 mb-2 rounded"></span>
-                              {'> Select "Digital World"'}<br/>
-                              {'> Generating Words...'}<br/>
-                              <span className="text-white group-hover:text-[#fbbf24] transition">[laptop, online, viral...]</span><span className="animate-pulse">_</span>
+                              {'> Select Topic'}<br/>
+                              {'> Generative AI...'}<br/>
+                              <span className="text-white group-hover:text-[#fbbf24] transition">[magic, wizard, spell]</span><span className="animate-pulse">_</span>
                           </div>
                           <h4 className="font-black text-lg text-white mb-2 uppercase tracking-wide">THE CONTENT INJECTION</h4>
                           <p className="text-sm text-gray-400 mb-3 leading-relaxed">Select a topic from our 500+ DFY Library or let the AI generate fresh words for you.</p>
-                          <p className="text-sm font-bold text-[#fbbf24] bg-yellow-900/20 p-2 rounded border border-yellow-900/50">- The "Kreator" Advantage: No more Writer's Block.</p>
+                          <p className="text-sm font-bold text-[#fbbf24] bg-yellow-900/20 p-2 rounded border border-yellow-900/50">- The "Kreator" Advantage: No more Writer's Block. Instant Content.</p>
                       </div>
 
                       {/* STEP 2 */}
@@ -438,12 +435,12 @@ const [openAccordions, setOpenAccordions] = useState({});
                               <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.05)_50%,transparent_75%)] bg-[length:20px_20px]"></div>
                               <div className="w-16 h-16 border-2 border-dashed border-[#7c3aed] grid grid-cols-3 gap-0.5 p-0.5 relative z-10 group-hover:scale-110 transition-transform duration-500">
                                   <div className="bg-[#7c3aed]/50"></div><div className="bg-[#7c3aed]/50"></div><div className="bg-[#7c3aed]/50"></div>
-                                  <div className="bg-[#7c3aed]/50"></div><div className="bg-[#fbbf24]/80 group-hover:bg-[#fbbf24] transition"></div><div className="bg-[#7c3aed]/50"></div>
+                                  <div className="bg-[#7c3aed]/50"></div><div className="bg-[#fbbf24]/80 group-hover:bg-[#fbbf24] transition rounded-full"></div><div className="bg-[#7c3aed]/50"></div>
                               </div>
                           </div>
                           <h4 className="font-black text-lg text-white mb-2 uppercase tracking-wide">THE "LIVE" KREATOR STUDIO</h4>
                           <p className="text-sm text-gray-400 mb-3 leading-relaxed">This is where the magic happens. Click "Preview Theme" and tweak your layout IN REAL-TIME.</p>
-                          <p className="text-sm font-bold text-[#fbbf24] bg-yellow-900/20 p-2 rounded border border-yellow-900/50">- Customize Everything: Grid lines, colors... LIVE.</p>
+                          <p className="text-sm font-bold text-[#fbbf24] bg-yellow-900/20 p-2 rounded border border-yellow-900/50">- Customize Everything: Grid lines, Solution circles, Colors, Margins... tweak it all LIVE on the screen. No need to export to see the result!</p>
                       </div>
 
                       {/* STEP 3 */}
@@ -460,7 +457,7 @@ const [openAccordions, setOpenAccordions] = useState({});
                           </div>
                           <h4 className="font-black text-lg text-white mb-2 uppercase tracking-wide">THE "ONE-CLICK" CLONE</h4>
                           <p className="text-sm text-gray-400 mb-3 leading-relaxed">Made the perfect layout for Page 1? Hit "Apply To Full Book".</p>
-                          <p className="text-sm font-bold text-[#fbbf24] bg-yellow-900/20 p-2 rounded border border-yellow-900/50">- Instantly format ALL 100 pages to match.</p>
+                          <p className="text-sm font-bold text-[#fbbf24] bg-yellow-900/20 p-2 rounded border border-yellow-900/50">- The Scale Power: Instantly format ALL 100 pages to match your design. Consistent, professional, and lightning-fast.</p>
                       </div>
 
                       {/* STEP 4 */}
@@ -481,7 +478,7 @@ const [openAccordions, setOpenAccordions] = useState({});
 
       {/* PHẦN 5: THE USP STACK */}
       <section id="features" className="bg-gradient-to-b from-[#09090b] to-[#2e1065] py-24 px-4 border-t border-gray-900">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-6xl mx-auto">
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-center text-white mb-20 uppercase tracking-tighter">
                   Why [TOOL NAME] Makes Every Other Generator <span className="text-[#ef4444]">Obsolete</span>...
               </h2>
@@ -490,14 +487,14 @@ const [openAccordions, setOpenAccordions] = useState({});
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
                   {/* F1: AI Content Generator */}
                   <div className="glass-panel p-8 md:p-10 rounded-2xl relative overflow-hidden border-2 border-[#fbbf24]/30 flex flex-col">
-                      <div className="absolute top-0 right-0 bg-[#ef4444] text-white text-[10px] font-bold px-3 py-1 rounded-bl z-10">MEDIA NOTE 5.1: AI GENERATOR GIF</div>
+                      <div className="absolute top-0 right-0 bg-[#ef4444] text-white text-[10px] font-bold px-3 py-1 rounded-bl z-10">MEDIA NOTE 5.1: GIF DÙNG AI</div>
                       
                       <h3 className="text-2xl font-black text-white mb-4 uppercase flex items-center relative z-10"><span className="bg-[#fbbf24] text-[#09090b] w-8 h-8 rounded flex items-center justify-center mr-3 text-lg">1</span> The AI Content Generator</h3>
                       <p className="text-lg font-bold text-[#fbbf24] mb-4 relative z-10">System Prompts Built-In</p>
                       
                       <div className="text-gray-300 space-y-4 mb-6 relative z-10 text-sm flex-grow">
-                          <p><strong className="text-[#ef4444]">❌ The Problem:</strong> Standard tools give you long, messy words that don't fit the puzzle.</p>
-                          <p><strong className="text-[#fbbf24]">✅ The Fix:</strong> We built a custom "System Prompt" that forces the AI to generate high-quality, grid-ready word lists instantly. You can generate topics, auto-fill words, tweak the prompts, or even add manual words for 100% control.</p>
+                          <p><strong className="text-[#ef4444]">The Problem:</strong> Standard tools give you long, messy words that don't fit the puzzle.</p>
+                          <p><strong className="text-[#fbbf24]">The Fix:</strong> We built a custom "System Prompt" that forces the AI to generate high-quality, grid-ready word lists instantly. You can generate topics, auto-fill words, tweak the prompts, or even add manual words for 100% control.</p>
                       </div>
                       
                       {/* Media 5.1 UI */}
@@ -520,13 +517,13 @@ const [openAccordions, setOpenAccordions] = useState({});
 
                   {/* F2: Smart Solutions Builder */}
                   <div className="glass-panel p-8 rounded-2xl relative overflow-hidden flex flex-col justify-between">
-                      <div className="absolute top-0 right-0 bg-[#ef4444] text-white text-[10px] font-bold px-2 py-1 rounded-bl z-10">MEDIA NOTE 5.2: SOLUTION BUILDER UI</div>
+                      <div className="absolute top-0 right-0 bg-[#ef4444] text-white text-[10px] font-bold px-2 py-1 rounded-bl z-10">MEDIA NOTE 5.2: ẢNH SOLUTION</div>
                       <div>
                           <h3 className="text-2xl font-black text-white mb-3 uppercase flex items-center"><span className="bg-[#fbbf24] text-[#09090b] w-8 h-8 rounded flex items-center justify-center mr-3 text-lg">2</span> "ONE-CLICK" SMART SOLUTIONS BUILDER</h3>
                           <p className="text-lg font-bold text-gray-300 mb-4">Buyers hate confusing answer keys. We automate the 5-Star Review process.</p>
                           <div className="space-y-4 text-gray-400 text-sm mb-6">
-                              <p><strong className="text-[#ef4444]">❌ The Nightmare:</strong> Formatting the "Solutions" section at the back of the book manually takes hours and leads to mistakes.</p>
-                              <p><strong className="text-[#fbbf24]">✅ The Fix:</strong> With our Smart Styling Engine, choose exactly how you want your solutions displayed. Put 4 or 6 solutions per page, customize the grid scale (%), and pick your highlight styling (Solid, Circled, etc.). It generates perfectly formatted answer keys instantly.</p>
+                              <p><strong className="text-[#ef4444]">- The Nightmare:</strong> Formatting the "Solutions" section at the back of the book manually takes hours and leads to mistakes.</p>
+                              <p><strong className="text-[#fbbf24]">- The Fix:</strong> With our Smart Styling Engine, choose exactly how you want your solutions displayed. Put 4 or 6 solutions per page, customize the grid scale (%), and pick your highlight styling (Solid, Circled, etc.). It generates perfectly formatted answer keys instantly.</p>
                           </div>
                           <div className="bg-green-900/30 border-l-4 border-green-500 p-4 rounded text-green-400 font-bold text-sm mb-6">
                               {'=>'} BENEFIT: Save hours per book and guarantee your readers have a flawless, frustration-free experience.
@@ -546,71 +543,9 @@ const [openAccordions, setOpenAccordions] = useState({});
                   </div>
               </div>
 
-              {/* FEATURE 3 & 4 */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-                  {/* F3: Magazine Formatter */}
-                  <div className="glass-panel p-8 rounded-2xl relative overflow-hidden flex flex-col justify-between">
-                      <div className="absolute top-0 right-0 bg-[#ef4444] text-white text-[10px] font-bold px-2 py-1 rounded-bl z-10">MEDIA NOTE 5.3: HEADER/FOOTER</div>
-                      <div>
-                          <h3 className="text-2xl font-black text-white mb-3 uppercase flex items-center"><span className="bg-[#fbbf24] text-[#09090b] w-8 h-8 rounded flex items-center justify-center mr-3 text-lg">3</span> THE "MAGAZINE-QUALITY" FORMATTER</h3>
-                          <p className="text-lg font-bold text-gray-300 mb-4">Publish books crafted like a traditional publishing house.</p>
-                          <div className="space-y-4 text-gray-400 text-sm mb-6">
-                              <p><strong className="text-[#ef4444]">❌ The Amateur Trap:</strong> No page numbers, missing titles = 1-star reviews. Manually typing them takes hours.</p>
-                              <p><strong className="text-[#fbbf24]">✅ The Fix:</strong> Dynamic Header & Footer Engine. Set variables like {"{TOPIC}"} at the top, {"{PAGE_NUM}"} at the bottom. Applied to entire book instantly.</p>
-                          </div>
-                          <div className="bg-green-900/30 border-l-4 border-green-500 p-4 rounded text-green-400 font-bold text-sm mb-6">
-                              {'=>'} BENEFIT: Instant Authority. Secure glowing reviews for "excellent formatting".
-                          </div>
-                      </div>
-
-                      <div className="mt-auto bg-white/5 border border-gray-700 rounded-lg p-4 h-40 flex flex-col justify-between group cursor-pointer hover:bg-white/10 hover:border-[#fbbf24]/50 transition duration-300">
-                          <div className="flex justify-between items-center border-b border-gray-600 pb-2">
-                              <span className="bg-[#2e1065]/80 border border-[#7c3aed] text-[#fbbf24] text-xs px-2 py-1 rounded font-mono group-hover:bg-[#fbbf24] group-hover:text-[#09090b] transition">{"{TOPIC_NAME}"}</span>
-                              <span className="text-gray-500 font-serif text-[10px] italic">"Space Exploration"</span>
-                          </div>
-                          <div className="flex-grow flex items-center justify-center text-gray-600 text-xs font-bold uppercase tracking-widest">
-                              [ Grid Layout Area ]
-                          </div>
-                          <div className="flex justify-center items-center border-t border-gray-600 pt-2">
-                              <span className="bg-indigo-900/80 border border-indigo-600 text-indigo-300 text-xs px-2 py-1 rounded font-mono group-hover:bg-indigo-500 group-hover:text-white transition">Page {"{PAGE_NUM}"}</span>
-                          </div>
-                      </div>
-                  </div>
-
-                  {/* F4: Visual Engine */}
-                  <div className="glass-panel p-8 rounded-2xl relative overflow-hidden flex flex-col justify-between">
-                      <div className="absolute top-0 right-0 bg-[#ef4444] text-white text-[10px] font-bold px-2 py-1 rounded-bl z-10">MEDIA NOTE 5.4: VISUAL ENGINE UI</div>
-                      <div>
-                          <h3 className="text-2xl font-black text-white mb-3 uppercase flex items-center"><span className="bg-[#fbbf24] text-[#09090b] w-8 h-8 rounded flex items-center justify-center mr-3 text-lg">4</span> THE "PREMIUM ACTIVITY" VISUAL ENGINE</h3>
-                          <p className="text-lg font-bold text-gray-300 mb-4">Why sell a book for $8.99 when you can sell it for $12.99?</p>
-                          <div className="space-y-4 text-gray-400 text-sm mb-6">
-                              <p><strong className="text-[#ef4444]">❌ The Problem:</strong> Plain text on white paper looks cheap.</p>
-                              <p><strong className="text-[#fbbf24]">✅ The Solution:</strong> Upload custom Background Images behind grids. Add Image Elements (like black-and-white vector graphics) right onto the page for your customers to COLOR!</p>
-                          </div>
-                          <div className="bg-green-900/30 border-l-4 border-green-500 p-4 rounded text-green-400 font-bold text-sm mb-6">
-                              {'=>'} BENEFIT: Instantly cross over into the highly profitable "Coloring Book" niche.
-                          </div>
-                      </div>
-
-                      <div className="mt-auto bg-black/50 border border-gray-700 rounded-lg p-3 flex h-40 group cursor-pointer hover:border-[#7c3aed] transition duration-300 shadow-inner">
-                          <div className="w-1/3 border-r border-gray-700 pr-3 flex flex-col justify-center space-y-2 group-hover:border-[#7c3aed] transition">
-                              <div className="h-2 bg-gray-600 w-full rounded"></div>
-                              <div className="h-6 bg-indigo-600 hover:bg-indigo-500 rounded w-full flex items-center justify-center text-[10px] text-white font-bold transition">Upload Image</div>
-                              <div className="h-2 bg-gray-600 w-3/4 rounded"></div>
-                          </div>
-                          <div className="w-2/3 pl-3 flex items-center justify-center relative">
-                              <div className="w-24 h-32 bg-white/10 border border-gray-600 flex flex-col relative overflow-hidden group-hover:bg-white/20 transition">
-                                  <span className="absolute -right-2 top-0 text-4xl opacity-30 grayscale group-hover:grayscale-0 group-hover:opacity-60 transition duration-500 transform group-hover:-rotate-12">🦖</span>
-                                  <div className="mt-auto mb-4 mx-auto w-16 h-16 border border-gray-400/50 grid grid-cols-3 z-10 bg-black/20 backdrop-blur-[1px]"></div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-
-              {/* MEDIA NOTE #5.5: BEFORE-AFTER (For Feature 5 Topic Vault) */}
+              {/* MEDIA NOTE #5.3: BEFORE-AFTER (For Feature 3 Topic Vault/Formatter) */}
               <div className="max-w-4xl mx-auto mb-16 relative">
-                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[#7c3aed] text-white text-[10px] font-bold px-4 py-1 rounded-full z-20 shadow uppercase tracking-widest">MEDIA NOTE 5.5: SPLIT SCREEN BEFORE/AFTER</div>
+                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-[#7c3aed] text-white text-[10px] font-bold px-4 py-1 rounded-full z-20 shadow uppercase tracking-widest">MEDIA NOTE 5.3: BEFORE-AFTER</div>
                   <div className="flex flex-col md:flex-row h-auto md:h-64 rounded-2xl overflow-hidden border-2 border-gray-700 shadow-2xl group cursor-pointer">
                       {/* Trái */}
                       <div className="w-full md:w-1/2 bg-gray-900 flex flex-col items-center justify-center p-8 relative grayscale border-r-4 border-[#09090b] group-hover:grayscale-0 transition duration-500">
@@ -640,15 +575,98 @@ const [openAccordions, setOpenAccordions] = useState({});
                   </div>
               </div>
 
+              {/* FEATURE 3 & 4 */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+                  {/* F3: Magazine Formatter */}
+                  <div className="glass-panel p-8 rounded-2xl relative overflow-hidden flex flex-col justify-between border-2 border-[#fbbf24]/30">
+                      <div className="absolute top-0 right-0 bg-[#ef4444] text-white text-[10px] font-bold px-2 py-1 rounded-bl z-10">MEDIA NOTE 5.4: ẢNH SO SÁNH SÁCH</div>
+                      <div>
+                          <h3 className="text-2xl font-black text-white mb-3 uppercase flex items-center"><span className="bg-[#fbbf24] text-[#09090b] w-8 h-8 rounded flex items-center justify-center mr-3 text-lg">3</span> THE "MAGAZINE-QUALITY" FORMATTER</h3>
+                          <p className="text-lg font-bold text-gray-300 mb-4">Publish books that look like they were crafted by a traditional publishing house... without touching InDesign.</p>
+                          <div className="space-y-4 text-gray-400 text-sm mb-6">
+                              <p><strong className="text-[#ef4444]">- The "Amateur" Trap:</strong> Amazon reviewers are ruthless. If your puzzle book lacks page numbers, or if the puzzle titles are missing, buyers will leave 1-star reviews complaining that the book is "hard to use" and "looks cheap". But manually typing 100 different topic titles and adding page numbers to every single PDF page? That takes hours of tedious, mind-numbing work.</p>
+                              <p><strong className="text-[#fbbf24]">- The KreatorKits Fix:</strong> We automated the professional polish. Our Dynamic Header & Footer Engine does the heavy lifting for you. Using smart variables, you can set it up once and apply it to the entire book instantly. Want the specific puzzle topic (e.g., "Space Exploration") to automatically appear at the top of its page? Done. Want auto-calculating page numbers perfectly centered at the bottom? Done. Adjust the fonts, sizes, and alignment globally in seconds.</p>
+                          </div>
+                          <div className="bg-green-900/30 border-l-4 border-green-500 p-4 rounded text-green-400 font-bold text-sm mb-6">
+                              {'=>'} BENEFIT: Instant Authority & 5-Star Proofing. Your books will look indistinguishable from top-tier, $15 activity books found in real bookstores. You secure glowing reviews for "excellent formatting" while saving yourself hours of formatting hell per book.
+                          </div>
+                      </div>
+
+                      {/* MEDIA NOTE 5.4 UI embedded */}
+                      <div className="mt-auto grid grid-cols-2 gap-4 h-40 group cursor-pointer">
+                          <div className="bg-white/5 border border-gray-700 rounded-lg p-3 flex flex-col justify-center items-center relative hover:bg-white/10 transition">
+                              <span className="text-4xl mb-2 grayscale opacity-60">🔲</span>
+                              <p className="text-center font-bold text-gray-500 text-xs">Others: Boring, $8.99 Book</p>
+                          </div>
+                          <div className="bg-[#2e1065]/40 border-2 border-[#7c3aed] rounded-lg p-3 flex flex-col justify-between relative hover:border-[#fbbf24] transition">
+                              <div className="flex justify-between items-center border-b border-[#7c3aed]/50 pb-1">
+                                  <span className="text-[#fbbf24] text-[10px] font-mono">{"{TOPIC_NAME}"}</span>
+                              </div>
+                              <div className="flex-grow flex items-center justify-center">
+                                  <span className="text-4xl">🌟🔠</span>
+                              </div>
+                              <div className="flex justify-center items-center border-t border-[#7c3aed]/50 pt-1">
+                                  <span className="text-indigo-300 text-[10px] font-mono">Page {"{PAGE_NUM}"}</span>
+                              </div>
+                              <p className="absolute -bottom-6 left-0 w-full text-center font-bold text-[#fbbf24] text-xs">You: Viral, $12.99 Book</p>
+                          </div>
+                      </div>
+                  </div>
+
+                  {/* F4: Visual Engine */}
+                  <div className="glass-panel p-8 rounded-2xl relative overflow-hidden flex flex-col justify-between">
+                      <div>
+                          <h3 className="text-2xl font-black text-white mb-3 uppercase flex items-center"><span className="bg-[#fbbf24] text-[#09090b] w-8 h-8 rounded flex items-center justify-center mr-3 text-lg">4</span> THE "PREMIUM ACTIVITY" VISUAL ENGINE</h3>
+                          <p className="text-lg font-bold text-gray-300 mb-4">Why sell a book for $8.99 when you can sell it for $12.99?</p>
+                          <div className="space-y-4 text-gray-400 text-sm mb-6">
+                              <p><strong className="text-[#ef4444]">- The Problem:</strong> Buyers are tired of plain text on white paper. It looks cheap.</p>
+                              <p><strong className="text-[#fbbf24]">- The [TOOL NAME] Solution:</strong> We give you a full visual decorator! You can upload your own custom Background Images to sit beautifully behind the puzzle grids. But it gets better: You can add Image Elements (like black-and-white vector graphics) right onto the page for your customers to COLOR!</p>
+                          </div>
+                          <div className="bg-green-900/30 border-l-4 border-green-500 p-4 rounded text-green-400 font-bold text-sm mb-6">
+                              {'=>'} BENEFIT: You instantly cross over into the highly profitable "Coloring Book" niche. Add a cute dinosaur graphic next to a Dinosaur Word Search, and parents will happily pay double for the added value.
+                          </div>
+                      </div>
+
+                      <div className="mt-auto bg-black/50 border border-gray-700 rounded-lg p-3 flex h-40 group cursor-pointer hover:border-[#7c3aed] transition duration-300 shadow-inner">
+                          <div className="w-1/3 border-r border-gray-700 pr-3 flex flex-col justify-center space-y-2 group-hover:border-[#7c3aed] transition">
+                              <div className="h-2 bg-gray-600 w-full rounded"></div>
+                              <div className="h-6 bg-indigo-600 hover:bg-indigo-500 rounded w-full flex items-center justify-center text-[10px] text-white font-bold transition">Upload Image</div>
+                              <div className="h-2 bg-gray-600 w-3/4 rounded"></div>
+                          </div>
+                          <div className="w-2/3 pl-3 flex items-center justify-center relative">
+                              <div className="w-24 h-32 bg-white/10 border border-gray-600 flex flex-col relative overflow-hidden group-hover:bg-white/20 transition">
+                                  <span className="absolute -right-2 top-0 text-4xl opacity-30 grayscale group-hover:grayscale-0 group-hover:opacity-60 transition duration-500 transform group-hover:-rotate-12">🦖</span>
+                                  <div className="mt-auto mb-4 mx-auto w-16 h-16 border border-gray-400/50 grid grid-cols-3 z-10 bg-black/20 backdrop-blur-[1px]"></div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
               {/* FEATURE 5 & 6 */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                   {/* F5: Live Editing Studio */}
-                  <div className="glass-panel p-8 rounded-2xl group hover:border-[#fbbf24]/30 transition duration-300 flex flex-col">
-                      <h3 className="text-2xl font-black text-white mb-4 uppercase flex items-center"><span className="bg-[#fbbf24] text-[#09090b] w-10 h-10 rounded flex items-center justify-center mr-3 text-lg">5</span> THE LIVE EDITING STUDIO</h3>
+                  <div className="glass-panel p-8 rounded-2xl group hover:border-[#fbbf24]/30 transition duration-300 flex flex-col relative">
+                      <div className="absolute top-0 right-0 bg-[#ef4444] text-white text-[10px] font-bold px-3 py-1 rounded-bl z-10">MEDIA NOTE 5.5: SO SÁNH</div>
+                      <h3 className="text-2xl font-black text-white mb-4 uppercase flex items-center mt-4"><span className="bg-[#fbbf24] text-[#09090b] w-10 h-10 rounded flex items-center justify-center mr-3 text-lg">5</span> THE LIVE EDITING STUDIO</h3>
                       <div className="text-gray-300 space-y-4 text-sm flex-grow">
-                          <p>Stop downloading "Blind Box" PDFs. Work directly on a canvas that feels like a real book layout.</p>
-                          <p>Edit your headers and footers, insert small graphics (like a cute dog in the corner), and see the exact customer experience before you export.</p>
+                          <p>Stop downloading "Blind Box" PDFs. Work directly on a canvas that feels like a real book layout. Edit your headers and footers, insert small graphics (like a cute dog in the corner), and see the exact customer experience before you export.</p>
                       </div>
+                      
+                      {/* Media Note 5.5 in Feature 5 */}
+                      <div className="w-full bg-black/60 border border-gray-700 rounded-lg p-4 mt-6 shadow-inner group-hover:border-[#fbbf24] transition duration-300">
+                           <div className="flex justify-between items-center">
+                                <div className="text-center p-2 opacity-50 grayscale border-r border-gray-700 w-1/2">
+                                    <span className="text-3xl block mb-1">📦❌</span>
+                                    <p className="text-[10px] font-bold text-gray-400 uppercase">Blind Box Generator</p>
+                                </div>
+                                <div className="text-center p-2 w-1/2">
+                                    <span className="text-3xl block mb-1">💻✨</span>
+                                    <p className="text-[10px] font-bold text-green-400 uppercase">Our Live Studio Canvas</p>
+                                </div>
+                           </div>
+                      </div>
+
                       <div className="bg-green-900/30 border-l-4 border-green-500 p-4 rounded text-green-400 font-bold text-sm mt-6">
                           {'=>'} BENEFIT: You export a 100% KDP-Ready PDF that requires ZERO extra editing. Go straight from our tool to publishing on Amazon in under 3 minutes.
                       </div>
@@ -656,12 +674,11 @@ const [openAccordions, setOpenAccordions] = useState({});
 
                   {/* F6: Intro & ToC Builder */}
                   <div className="glass-panel p-8 rounded-2xl relative overflow-hidden border-2 border-[#fbbf24]/30 flex flex-col">
-                      <div className="absolute top-0 right-0 bg-[#ef4444] text-white text-[10px] font-bold px-3 py-1 rounded-bl z-10">MEDIA NOTE 5.6: ToC BUILDER</div>
+                      <div className="absolute top-0 right-0 bg-[#ef4444] text-white text-[10px] font-bold px-3 py-1 rounded-bl z-10">MEDIA NOTE 5.6</div>
                       
-                      <h3 className="text-2xl font-black text-white mb-4 uppercase flex items-center relative z-10"><span className="bg-[#fbbf24] text-[#09090b] w-10 h-10 rounded flex items-center justify-center mr-3 text-lg">6</span> "Intro & Table of Contents" Builder</h3>
+                      <h3 className="text-2xl font-black text-white mb-4 uppercase flex items-center relative z-10 mt-4"><span className="bg-[#fbbf24] text-[#09090b] w-10 h-10 rounded flex items-center justify-center mr-3 text-lg">6</span> "Intro & Table of Contents" Builder</h3>
                       <div className="text-gray-300 space-y-4 text-sm relative z-10 flex-grow">
-                          <p>This feature alone will save you hours per book. No more manual math!</p>
-                          <p><strong>[TOOL NAME]</strong> automatically generates a professional Intro page and perfectly calculates your Table of Contents to match your puzzle and solution pages.</p>
+                          <p>This feature alone will save you hours per book. No more manual math! <strong>[TOOL NAME]</strong> automatically generates a professional Intro page and perfectly calculates your Table of Contents to match your puzzle and solution pages. built in</p>
                       </div>
 
                       {/* ToC Mock UI */}
@@ -706,11 +723,8 @@ const [openAccordions, setOpenAccordions] = useState({});
           <div className="max-w-4xl mx-auto">
               
               <div className="text-center mb-16">
-                  <p className="text-xl text-[#fbbf24] font-bold tracking-wide uppercase mb-2">Let’s Review The Arsenal You Are Getting Today</p>
-                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 uppercase tracking-tighter drop-shadow-lg">
-                      To Dominate Amazon KDP...
-                  </h2>
-                  <p className="text-lg text-gray-400">Here is exactly what’s included when you secure your license to [TOOL NAME] right now:</p>
+                  <p className="text-xl text-[#fbbf24] font-bold tracking-wide uppercase mb-2">Let’s Review The Arsenal You Are Getting Today To Dominate Amazon KDP...</p>
+                  <p className="text-lg text-gray-400 mt-6">Here is exactly what’s included when you secure your license to [TOOL NAME] right now:</p>
               </div>
 
               {/* VALUE LIST (ACCORDION UI) */}
@@ -724,7 +738,7 @@ const [openAccordions, setOpenAccordions] = useState({});
                               <h4 className="text-xl font-bold text-white uppercase tracking-wide">The "Live Studio" Cloud App</h4>
                           </div>
                           <div className="flex items-center">
-                              <span className="text-[#fbbf24] font-black text-xl mr-4 drop-shadow-md">Value: $297/Yr</span>
+                              <span className="text-[#fbbf24] font-black text-xl mr-4 drop-shadow-md">Value: $297/Year</span>
                               <span className="text-gray-400 transition-transform duration-300" style={{ transform: openAccordions['v1'] ? 'rotate(180deg)' : 'rotate(0deg)' }}>▼</span>
                           </div>
                       </button>
@@ -738,7 +752,7 @@ const [openAccordions, setOpenAccordions] = useState({});
                       <button onClick={() => toggleAccordion('v2')} className="w-full flex justify-between items-center p-6 bg-[#09090b]/50 hover:bg-[#2e1065]/50 transition">
                           <div className="flex items-center text-left">
                               <span className="text-3xl mr-4 drop-shadow-[0_0_10px_rgba(52,211,153,0.8)]">🟢</span>
-                              <h4 className="text-xl font-bold text-white uppercase tracking-wide">"Shape-Shifting" Masking Engine</h4>
+                              <h4 className="text-xl font-bold text-white uppercase tracking-wide">The "Shape-Shifting" Custom Masking Engine</h4>
                           </div>
                           <div className="flex items-center">
                               <span className="text-[#fbbf24] font-black text-xl mr-4 drop-shadow-md">Value: $197</span>
@@ -755,7 +769,7 @@ const [openAccordions, setOpenAccordions] = useState({});
                       <button onClick={() => toggleAccordion('v3')} className="w-full flex justify-between items-center p-6 bg-[#09090b]/50 hover:bg-[#2e1065]/50 transition">
                           <div className="flex items-center text-left">
                               <span className="text-3xl mr-4 drop-shadow-[0_0_10px_rgba(52,211,153,0.8)]">🟢</span>
-                              <h4 className="text-xl font-bold text-white uppercase tracking-wide">10K+ DFY Vault & AI Hunter</h4>
+                              <h4 className="text-xl font-bold text-white uppercase tracking-wide">The 10,000+ DFY Keyword Vault & AI Niche Hunter</h4>
                           </div>
                           <div className="flex items-center">
                               <span className="text-[#fbbf24] font-black text-xl mr-4 drop-shadow-md">Value: $297</span>
@@ -772,7 +786,7 @@ const [openAccordions, setOpenAccordions] = useState({});
                       <button onClick={() => toggleAccordion('v4')} className="w-full flex justify-between items-center p-6 bg-[#09090b]/50 hover:bg-[#2e1065]/50 transition">
                           <div className="flex items-center text-left">
                               <span className="text-3xl mr-4 drop-shadow-[0_0_10px_rgba(52,211,153,0.8)]">🟢</span>
-                              <h4 className="text-xl font-bold text-white uppercase tracking-wide">"Magazine-Quality" Formatter</h4>
+                              <h4 className="text-xl font-bold text-white uppercase tracking-wide">The "Magazine-Quality" Formatter & Decorator</h4>
                           </div>
                           <div className="flex items-center">
                               <span className="text-[#fbbf24] font-black text-xl mr-4 drop-shadow-md">Value: $147</span>
@@ -789,7 +803,7 @@ const [openAccordions, setOpenAccordions] = useState({});
                       <button onClick={() => toggleAccordion('v5')} className="w-full flex justify-between items-center p-6 bg-[#09090b]/50 hover:bg-[#2e1065]/50 transition">
                           <div className="flex items-center text-left">
                               <span className="text-3xl mr-4 drop-shadow-[0_0_10px_rgba(52,211,153,0.8)]">🟢</span>
-                              <h4 className="text-xl font-bold text-white uppercase tracking-wide">Auto "Intro & ToC" Builder</h4>
+                              <h4 className="text-xl font-bold text-white uppercase tracking-wide">Auto "Intro & Table of Contents" Builder</h4>
                           </div>
                           <div className="flex items-center">
                               <span className="text-[#fbbf24] font-black text-xl mr-4 drop-shadow-md">Value: $97</span>
@@ -797,7 +811,7 @@ const [openAccordions, setOpenAccordions] = useState({});
                           </div>
                       </button>
                       <div id="v5" className={`accordion-content px-6 bg-black/40 text-gray-300 border-t border-gray-800 ${openAccordions['v5'] ? 'open' : ''}`}>
-                          Automatically generate a professional Intro page and perfectly calculate your Table of Contents to match your puzzle and solution pages.
+                          Say goodbye to manual math and formatting hell. Automatically generate a professional Intro page and a perfectly calculated Table of Contents that matches your 150-page book instantly.
                       </div>
                   </div>
 
@@ -806,7 +820,7 @@ const [openAccordions, setOpenAccordions] = useState({});
                       <button onClick={() => toggleAccordion('v6')} className="w-full flex justify-between items-center p-6 hover:bg-black/20 transition">
                           <div className="flex items-center text-left">
                               <span className="text-3xl mr-4 drop-shadow-lg">🎁</span>
-                              <h4 className="text-xl font-black text-white uppercase tracking-wide">BONUS: 5 Premium Cover Templates</h4>
+                              <h4 className="text-xl font-black text-white uppercase tracking-wide">FAST-ACTION BONUS: 5 Premium KDP Cover Templates</h4>
                           </div>
                           <div className="flex items-center">
                               <span className="text-white font-black text-xl mr-4 bg-[#09090b]/50 px-3 py-1 rounded">Value: $97</span>
@@ -814,16 +828,29 @@ const [openAccordions, setOpenAccordions] = useState({});
                           </div>
                       </button>
                       <div id="v6" className={`accordion-content px-6 bg-black/40 text-white border-t border-red-500/50 ${openAccordions['v6'] ? 'open' : ''}`}>
-                          As real 6-figure sellers, we don't just give you the tool—we show you how to sell the output. Get our exact blueprint and cover templates for ranking and scaling your puzzle empire.
+                          As real 6-figure sellers, we don't just give you the tool—we show you how to sell the output. Get our exact blueprint for ranking and scaling your puzzle empire.
                       </div>
                   </div>
 
               </div>
 
-              <div className="text-center mb-16">
+              {/* EPIC FINAL CTA */}
+              <div className="text-center mb-20 relative mt-16">
+                  <div className="absolute inset-0 bg-[#fbbf24] blur-[120px] opacity-10 rounded-full"></div>
+                  
                   <p className="text-3xl font-black text-gray-400 mb-2 uppercase tracking-widest">TOTAL REAL-WORLD VALUE: <span className="line-through decoration-[#ef4444] decoration-4 text-gray-500">$1,132</span></p>
                   <p className="text-xl text-gray-300 mb-2 font-medium">But Today, You Aren't Paying $1,132.</p>
-                  <p className="text-xl text-gray-300 font-medium">You aren't even paying our standard $79 monthly fee.</p>
+                  <p className="text-xl text-gray-300 mb-6 font-medium">You aren't even paying our standard $97 monthly fee.</p>
+                  
+                  <div className="inline-block bg-[#ef4444] text-white text-sm font-bold px-4 py-1 rounded-full uppercase tracking-widest mb-6 animate-bounce">Strictly Limited Launch Offer</div>
+                  
+                  <button onClick={() => alert('Redirecting to checkout...')} className="w-full max-w-2xl mx-auto bg-gradient-to-r from-[#fbbf24] to-yellow-500 hover:from-white hover:to-[#fbbf24] text-[#09090b] text-3xl md:text-5xl font-black py-8 px-6 rounded-full shadow-[0_0_50px_rgba(251,191,36,0.6)] pulse-epic uppercase tracking-tighter block border-4 border-yellow-300 transition-all duration-300 transform hover:scale-105">
+                      👉 GET INSTANT ACCESS <br/><span className="text-2xl md:text-3xl opacity-80 mt-2 block">FOR JUST $79!</span>
+                  </button>
+                  
+                  <p className="mt-8 text-2xl font-black text-[#fbbf24] uppercase tracking-widest bg-yellow-900/40 inline-block px-6 py-2 rounded-lg border border-[#fbbf24]/30">
+                      No Monthly Fees. Pay Once, Use Forever.
+                  </p>
               </div>
 
               {/* PRICING TABLE (NEW) */}
@@ -836,15 +863,15 @@ const [openAccordions, setOpenAccordions] = useState({});
                       <div className="bg-black/80 p-8 hidden md:block">
                           <div className="h-24"></div> {/* Spacer for Header */}
                           <ul className="space-y-6 text-gray-400 font-medium text-sm">
-                              <li className="h-8 flex items-center border-b border-gray-800">Puzzle Generation Limit</li>
-                              <li className="h-8 flex items-center border-b border-gray-800">AI Word Generator</li>
-                              <li className="h-8 flex items-center border-b border-gray-800">Fonts Available</li>
-                              <li className="h-8 flex items-center border-b border-gray-800">Backgrounds</li>
-                              <li className="h-8 flex items-center border-b border-gray-800">Insert Image/Decor</li>
-                              <li className="h-8 flex items-center border-b border-gray-800">Auto Intro Builder</li>
-                              <li className="h-8 flex items-center border-b border-gray-800">Auto Table of Contents</li>
-                              <li className="h-8 flex items-center border-b border-gray-800">Premium Cover Templates</li>
-                              <li className="h-8 flex items-center">Source Code & Local Host</li>
+                              <li className="h-8 flex items-center border-b border-gray-800">Puzzle Generation Limit (Giới hạn tạo)</li>
+                              <li className="h-8 flex items-center border-b border-gray-800">AI Word Generator (AI tạo từ vựng)</li>
+                              <li className="h-8 flex items-center border-b border-gray-800">Fonts Available (Font chữ hỗ trợ)</li>
+                              <li className="h-8 flex items-center border-b border-gray-800">Backgrounds (Hình nền)</li>
+                              <li className="h-8 flex items-center border-b border-gray-800">Insert Image/Decor (Chèn đồ họa)</li>
+                              <li className="h-8 flex items-center border-b border-gray-800">Auto Intro Builder (Tạo Lời mở đầu)</li>
+                              <li className="h-8 flex items-center border-b border-gray-800">Auto Table of Contents (Tự động Mục lục)</li>
+                              <li className="h-8 flex items-center border-b border-gray-800">Premium Cover Templates (Mẫu bìa sẵn)</li>
+                              <li className="h-8 flex items-center">Source Code & Local Host (Mã & Host riêng)</li>
                           </ul>
                       </div>
 
@@ -866,7 +893,7 @@ const [openAccordions, setOpenAccordions] = useState({});
                               <li className="h-8 flex justify-center items-center text-[#ef4444]">❌</li>
                           </ul>
                           <div className="mt-8 text-center">
-                              <button onClick={() => alert('Redirecting to Basic Checkout...')} className="bg-gray-800 hover:bg-gray-700 text-gray-300 font-bold py-3 px-6 rounded text-sm w-full transition">Get the Basic Plan ($69)</button>
+                              <button onClick={() => alert('Redirecting to Basic Checkout...')} className="bg-gray-800 hover:bg-gray-700 text-gray-300 font-bold py-3 px-6 rounded text-sm w-full transition border border-gray-600">Get the Basic Plan ($69)</button>
                           </div>
                       </div>
 
@@ -924,15 +951,18 @@ const [openAccordions, setOpenAccordions] = useState({});
       <section id="team" className="bg-gradient-to-b from-[#2e1065] to-[#09090b] py-24 px-4 border-t border-gray-900">
           <div className="max-w-6xl mx-auto">
               <div className="text-center mb-16">
-                  <p className="text-[#fbbf24] font-bold tracking-widest uppercase mb-2">MEET THE KREATOR TEAM</p>
-                  <h2 className="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter">We Are Not "Gurus". <br/><span className="text-gray-400">We Are Battle-Tested KDP Veterans.</span></h2>
+                  <h2 className="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter mb-4">MEET THE KREATOR TEAM</h2>
+                  <p className="text-2xl text-gray-400 font-medium">We Are Not "Gurus". We Are Battle-Tested KDP Veterans.</p>
               </div>
 
               {/* TEAM PROFILES */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 relative">
+                  <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-[#7c3aed] text-white text-[10px] font-bold px-3 py-1 rounded-full z-10 tracking-widest uppercase shadow-lg">MEDIA NOTE 7.1: TEAM PROFILES</div>
                   {/* Blake */}
                   <div className="glass-panel p-8 rounded-2xl text-center group hover:-translate-y-2 transition duration-300 border border-gray-700 hover:border-[#fbbf24]">
-                      <div className="w-32 h-32 mx-auto bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full mb-6 flex items-center justify-center text-4xl shadow-lg border-4 border-[#09090b] group-hover:border-[#fbbf24] transition">👨🏻‍💻</div>
+                      <div className="w-32 h-32 mx-auto bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full mb-6 flex items-center justify-center text-4xl shadow-lg border-4 border-[#09090b] group-hover:border-[#fbbf24] transition overflow-hidden">
+                          <span className="text-5xl drop-shadow">👨🏻‍💻</span>
+                      </div>
                       <h3 className="text-2xl font-black text-white uppercase">Blake Tran</h3>
                       <p className="text-[#fbbf24] font-bold text-sm mb-4 tracking-widest uppercase">BOD</p>
                       <p className="text-gray-300 text-sm leading-relaxed">The visionary 7-figure seller who cracked the Amazon algorithm. Blake designed the core publishing frameworks and workflows that ensure every book generated by our tool is primed for maximum royalties.</p>
@@ -940,7 +970,9 @@ const [openAccordions, setOpenAccordions] = useState({});
 
                   {/* Steven */}
                   <div className="glass-panel p-8 rounded-2xl text-center group hover:-translate-y-2 transition duration-300 border border-gray-700 hover:border-[#fbbf24]">
-                      <div className="w-32 h-32 mx-auto bg-gradient-to-br from-blue-500 to-cyan-600 rounded-full mb-6 flex items-center justify-center text-4xl shadow-lg border-4 border-[#09090b] group-hover:border-[#fbbf24] transition">👨🏻‍🔬</div>
+                      <div className="w-32 h-32 mx-auto bg-gradient-to-br from-blue-500 to-cyan-600 rounded-full mb-6 flex items-center justify-center text-4xl shadow-lg border-4 border-[#09090b] group-hover:border-[#fbbf24] transition overflow-hidden">
+                           <span className="text-5xl drop-shadow">👨🏻‍🔬</span>
+                      </div>
                       <h3 className="text-2xl font-black text-white uppercase">Steven Nguyen</h3>
                       <p className="text-[#fbbf24] font-bold text-sm mb-4 tracking-widest uppercase">CIO</p>
                       <p className="text-gray-300 text-sm leading-relaxed">The lead architect who turned complex publishing nightmares into a seamless, cloud-based engine. Steven integrated the advanced AI System Prompts to ensure you never have to deal with "garbage words" again.</p>
@@ -948,9 +980,11 @@ const [openAccordions, setOpenAccordions] = useState({});
 
                   {/* Kaizie */}
                   <div className="glass-panel p-8 rounded-2xl text-center group hover:-translate-y-2 transition duration-300 border border-gray-700 hover:border-[#fbbf24]">
-                      <div className="w-32 h-32 mx-auto bg-gradient-to-br from-pink-500 to-rose-600 rounded-full mb-6 flex items-center justify-center text-4xl shadow-lg border-4 border-[#09090b] group-hover:border-[#fbbf24] transition">👩🏻‍🎨</div>
+                      <div className="w-32 h-32 mx-auto bg-gradient-to-br from-pink-500 to-rose-600 rounded-full mb-6 flex items-center justify-center text-4xl shadow-lg border-4 border-[#09090b] group-hover:border-[#fbbf24] transition overflow-hidden">
+                           <span className="text-5xl drop-shadow">👩🏻‍🎨</span>
+                      </div>
                       <h3 className="text-2xl font-black text-white uppercase">Kaizie Nguyen</h3>
-                      <p className="text-[#fbbf24] font-bold text-sm mb-4 tracking-widest uppercase">UX Strategist</p>
+                      <p className="text-[#fbbf24] font-bold text-sm mb-4 tracking-widest uppercase">Product Lead / UX Strategist</p>
                       <p className="text-gray-300 text-sm leading-relaxed">The strategist behind the flawless user experience. Kaizie ensures that every layout, font, and Table of Contents meets the highest KDP quality standards, making sure your books actually look and feel like $15 bestsellers.</p>
                   </div>
               </div>
@@ -958,7 +992,7 @@ const [openAccordions, setOpenAccordions] = useState({});
               {/* CTA #4 */}
               <div className="text-center max-w-3xl mx-auto">
                   <p className="text-2xl text-white font-black uppercase mb-4">Enough about us. Let’s talk about your new publishing empire.</p>
-                  <p className="text-lg text-gray-300 mb-8">Now that you know who we are, it's time to see the exact engine we use to dominate the Amazon algorithm. No more blind boxes. No more manual formatting. Let us show you how to generate a 150-page bestseller in literal seconds.</p>
+                  <p className="text-lg text-gray-300 mb-8">Now that you know who we are, it's time to see the exact engine we use to dominate the Amazon algorithm. No more blind boxes. No more manual formatting. <br/><br/><span className="text-[#fbbf24] font-bold">Let us show you how to generate a 150-page bestseller in literal seconds.</span></p>
                   
                   <button onClick={() => scrollTo('mechanism')} className="glow-btn-yellow text-[#09090b] text-xl font-black py-4 px-8 rounded-full uppercase tracking-wider transition">
                       👉 SHOW ME HOW THE "1-CLICK" ENGINE WORKS!
@@ -1077,12 +1111,15 @@ const [openAccordions, setOpenAccordions] = useState({});
           </div>
       </section>
 
-      {/* Footer */}
+      {/* CONTACT & Footer */}
       <footer className="bg-black text-gray-600 py-10 text-center text-sm border-t border-gray-900">
-          <div className="flex justify-center space-x-6 mb-4">
-              <a href="#" className="hover:text-white transition">Facebook</a>
-              <a href="#" className="hover:text-white transition">Youtube</a>
-              <a href="#" className="hover:text-white transition">Fanpage</a>
+          <div className="mb-6">
+              <p className="font-bold text-white mb-4 uppercase tracking-widest text-lg">Contact Us:</p>
+              <div className="flex justify-center space-x-6">
+                  <a href="#" className="hover:text-[#fbbf24] transition font-bold text-gray-400">Facebook</a>
+                  <a href="#" className="hover:text-[#fbbf24] transition font-bold text-gray-400">Youtube</a>
+                  <a href="#" className="hover:text-[#fbbf24] transition font-bold text-gray-400">Fanpage</a>
+              </div>
           </div>
           <p className="font-bold tracking-widest uppercase">&copy; 2026 KreatorKits. All rights reserved.</p>
       </footer>
